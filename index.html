@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reno Store 123 — Construction Detailed Schedule</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14432B;
+    --ink-soft:#2E5940;
+    --paper:#F4F2EC;
+    --paper-raised:#FFFFFF;
+    --line:#DAD5C8;
+    --line-strong:#B9B3A2;
+    --steel:#3E6FA8;
+    --steel-dk:#2C5482;
+    --go:#2F7A4F;
+    --rust:#C1521F;
+    --concrete:#9B968B;
+    --amber:#F4B400;
+    --today:#C1521F;
+    --brand-green:#1B5E3A;
+    --brand-green-dk:#0F3D26;
+    font-size:15px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:#E5E1D6;color:var(--ink);font-family:'Inter',sans-serif;}
+  .sheet{max-width:none;margin:0;padding:10px 10px 24px;}
+
+  /* ---------- Title block ---------- */
+  .titleblock{
+    background:var(--ink);
+    color:var(--paper);
+    border-radius:6px 6px 0 0;
+    padding:22px 28px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:24px;
+    flex-wrap:wrap;
+    position:relative;
+    overflow:hidden;
+  }
+  .titleblock::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.035) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.035) 0 1px, transparent 1px 28px);
+    pointer-events:none;
+  }
+  .titleblock .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--amber);
+    margin-bottom:6px;
+  }
+  .titleblock h1{
+    font-family:'Oswald',sans-serif;
+    font-weight:600;
+    font-size:30px;
+    letter-spacing:.01em;
+    margin:0;
+    text-transform:uppercase;
+  }
+  .titleblock .sub{
+    font-family:'Inter',sans-serif;
+    font-size:13px;
+    color:#C9D2DC;
+    margin-top:4px;
+    max-width:640px;
+  }
+  .titleblock .stat{
+    position:relative;
+    text-align:right;
+    min-width:150px;
+  }
+  .titleblock .stat .num{
+    font-family:'Oswald',sans-serif;
+    font-size:34px;
+    font-weight:600;
+    line-height:1;
+  }
+  .titleblock .stat .lbl{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:#9BA9B8;
+    margin-top:4px;
+  }
+  .overall-bar{
+    width:170px;height:6px;border-radius:3px;background:rgba(255,255,255,0.18);
+    margin-top:8px;overflow:hidden;position:relative;
+  }
+  .overall-bar > div{height:100%;background:var(--amber);border-radius:3px;transition:width .3s;}
+
+  /* ---------- Toolbar ---------- */
+  .toolbar{
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    border-top:none;
+    padding:10px 20px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .toolbar .grp{display:flex;gap:8px;align-items:center;}
+  .toolbar .sep{width:1px;height:22px;background:var(--line-strong);margin:0 4px;}
+  button.tbtn{
+    font-family:'Inter',sans-serif;
+    font-size:12.5px;
+    font-weight:600;
+    color:var(--ink);
+    background:var(--paper);
+    border:1px solid var(--line-strong);
+    border-radius:5px;
+    padding:7px 12px;
+    cursor:pointer;
+    display:flex;align-items:center;gap:6px;
+    transition:background .12s, transform .05s;
+  }
+  button.tbtn:hover{background:#EFEBDF;}
+  button.tbtn:active{transform:translateY(1px);}
+  button.tbtn.primary{background:var(--brand-green);color:#fff;border-color:var(--brand-green-dk);}
+  button.tbtn.primary:hover{background:var(--brand-green-dk);}
+  button.tbtn.warn{color:var(--rust);border-color:var(--rust);}
+  button.tbtn.warn:hover{background:#FBEAE1;}
+  .zoom-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-soft);}
+  select.phase-select{
+    font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;color:var(--ink);
+    background:var(--paper);border:1px solid var(--line-strong);border-radius:5px;padding:7px 10px;
+  }
+  .toolbar .flexgap{flex:1;}
+  .legend{display:flex;gap:12px;font-size:11px;color:var(--ink-soft);flex-wrap:wrap;max-width:620px;}
+  .legend .sw{display:inline-flex;align-items:center;gap:5px;}
+  .legend .dot{width:10px;height:10px;border-radius:2px;display:inline-block;}
+  .legend-row{display:flex;gap:18px;flex-wrap:wrap;width:100%;padding:0 20px 10px;font-size:11px;color:var(--ink-soft);align-items:center;background:var(--paper-raised);border:1px solid var(--line);border-top:none;}
+  .legend-row .grp-title{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#8A8577;}
+
+  /* ---------- Gantt area ---------- */
+  .gantt-shell{
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    border-top:none;
+    border-radius:0 0 6px 6px;
+    overflow:hidden;
+  }
+  .scroll-wrap{
+    overflow:auto;
+    max-height:70vh;
+    position:relative;
+  }
+  table.gantt{
+    border-collapse:separate;
+    border-spacing:0;
+    font-size:12.5px;
+  }
+  table.gantt th, table.gantt td{
+    border-bottom:1px solid var(--line);
+    padding:0;
+    white-space:nowrap;
+  }
+  .sticky{
+    position:sticky;
+    background:var(--paper-raised);
+    z-index:3;
+  }
+  .col-num{left:0;width:34px;min-width:34px;}
+  .col-name{left:34px;width:246px;min-width:246px;}
+  .col-res{left:280px;width:150px;min-width:150px;}
+  .col-start{left:430px;width:88px;min-width:88px;}
+  .col-end{left:518px;width:88px;min-width:88px;}
+  .col-days{left:606px;width:50px;min-width:50px;}
+  .col-prog{left:656px;width:132px;min-width:132px;}
+  .col-del{left:788px;width:32px;min-width:32px;box-shadow:2px 0 4px rgba(0,0,0,0.06);}
+
+  thead .sticky{z-index:5;}
+  thead tr.month-row th{
+    background:#EDEAE0;
+    font-family:'JetBrains Mono',monospace;
+    font-size:10.5px;
+    font-weight:600;
+    color:var(--ink-soft);
+    text-align:left;
+    padding:6px 0 6px 6px;
+    border-right:1px solid var(--line-strong);
+    border-bottom:1px solid var(--line-strong);
+  }
+  thead tr.month-row th.sticky{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Inter',sans-serif;
+    font-size:10px;
+    font-weight:600;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    padding:8px 8px;
+    border-right:none;
+    border-bottom:1px solid var(--ink);
+  }
+
+  tbody td{padding:0 8px;height:30px;vertical-align:middle;}
+  tbody tr:hover td.sticky{background:#FBF9F3;}
+  tbody tr:hover{background:#FBF9F3;}
+  tbody tr.is-parent td.col-name{font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:.01em;text-transform:uppercase;font-size:11.5px;}
+  tbody tr.is-parent td{background:#F0EEE6;}
+  tbody tr.is-parent:hover td.sticky, tbody tr.is-parent:hover{background:#EAE7DB;}
+  tbody tr.level-0 td.col-name{font-size:12.5px;}
+  tbody tr.hidden-row{display:none;}
+
+  .name-cell{display:flex;align-items:center;gap:6px;overflow:hidden;}
+  .phase-dot{width:8px;height:8px;border-radius:2px;flex:0 0 auto;}
+  .twisty{
+    width:14px;height:14px;flex:0 0 auto;
+    border:none;background:transparent;cursor:pointer;
+    color:var(--ink-soft);font-size:11px;
+    display:flex;align-items:center;justify-content:center;
+    transition:transform .15s;
+  }
+  .twisty.collapsed{transform:rotate(-90deg);}
+  .indent-spacer{flex:0 0 auto;}
+  input.name-input, input.res-input{
+    border:none;background:transparent;font-family:inherit;font-size:inherit;color:inherit;
+    width:100%;padding:2px 0;border-radius:3px;
+  }
+  input.res-input{font-size:11px;color:var(--ink-soft);}
+  input.name-input:focus, input.res-input:focus{background:#fff;outline:1px solid var(--steel);}
+  tr.is-parent input.name-input{font-family:'Oswald',sans-serif;font-weight:600;text-transform:uppercase;font-size:11.5px;letter-spacing:.01em;}
+
+  input.date-input, input.num-input{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    border:1px solid transparent;
+    background:transparent;
+    border-radius:3px;
+    padding:3px 4px;
+    width:100%;
+    color:var(--ink-soft);
+  }
+  input.date-input:hover, input.num-input:hover{border-color:var(--line-strong);}
+  input.date-input:focus, input.num-input:focus{border-color:var(--steel);background:#fff;outline:none;}
+  input.date-input[disabled], input.num-input[disabled]{color:var(--concrete);}
+  .days-readout{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-soft);padding:3px 4px;text-align:right;}
+
+  .prog-wrap{display:flex;align-items:center;gap:6px;}
+  input.prog-input{width:52px;text-align:right;}
+  .prog-mini{flex:1;height:5px;border-radius:3px;background:#E4E0D3;overflow:hidden;min-width:20px;}
+  .prog-mini > div{height:100%;border-radius:3px;}
+
+  .del-btn{
+    width:22px;height:22px;border:none;background:transparent;color:var(--concrete);
+    cursor:pointer;border-radius:4px;font-size:14px;line-height:1;
+  }
+  .del-btn:hover{color:var(--rust);background:#FBEAE1;}
+
+  /* timeline cell */
+  td.timeline-td{position:relative;padding:0;}
+  .timeline-outer{position:relative;height:30px;}
+  .bar-track{
+    position:absolute;top:7px;height:16px;border-radius:4px;
+    box-shadow:inset 0 0 0 1px rgba(0,0,0,0.08);
+    overflow:hidden;
+    cursor:pointer;
+  }
+  .bar-fill{position:absolute;top:0;left:0;bottom:0;border-radius:4px 0 0 4px;}
+  tr.is-parent .bar-track{background:transparent !important;box-shadow:inset 0 0 0 1.5px var(--ink-soft);border-radius:5px;top:9px;height:12px;}
+  tr.is-parent .bar-fill{background:var(--ink-soft) !important;opacity:.35;border-radius:4px 0 0 4px;}
+  .bar-label{
+    position:absolute;top:7px;height:16px;line-height:16px;
+    font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-soft);
+    white-space:nowrap;padding-left:6px;
+  }
+
+  .status-completed{background:var(--go);}
+  .status-overdue{background:var(--rust);}
+  .status-progress{background:var(--steel);}
+  .status-upcoming{background:var(--concrete);}
+
+  .today-line{position:absolute;top:0;bottom:0;width:2px;background:var(--today);z-index:4;pointer-events:none;}
+  .today-flag{
+    position:absolute;top:2px;transform:translateX(-50%);
+    background:var(--today);color:#fff;font-family:'JetBrains Mono',monospace;
+    font-size:9.5px;padding:1px 5px;border-radius:3px;white-space:nowrap;z-index:6;
+    box-shadow:0 1px 3px rgba(0,0,0,.25);
+  }
+
+  .footer-note{
+    display:flex;justify-content:space-between;align-items:center;
+    font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#8A8577;
+    padding:12px 4px 0;
+    flex-wrap:wrap;
+    gap:6px;
+  }
+
+  ::-webkit-scrollbar{height:11px;width:11px;}
+  ::-webkit-scrollbar-track{background:#EDEAE0;}
+  ::-webkit-scrollbar-thumb{background:#C7C1AF;border-radius:6px;border:2px solid #EDEAE0;}
+  ::-webkit-scrollbar-thumb:hover{background:#B3AC97;}
+
+  @media print{
+    body{background:#fff;}
+    .toolbar, .legend-row{display:none;}
+    .sheet{padding:0;max-width:none;}
+    .scroll-wrap{max-height:none;overflow:visible;}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="titleblock">
+    <div>
+      <div class="eyebrow">Construction &middot; Detailed Schedule</div>
+      <h1>Reno Store 123</h1>
+      <div class="sub">Rebased from the McCoys Canyon Lake schedule — 111 activities across Procurement, Site, Sales Floor Building, Drive Thru, Inspections/CO, and Store Planning - Merchandising. Mobilize starts 2/1/2027. Store Set Up runs 6 weeks to absorb the Thanksgiving slowdown. Edit progress and dates below as the job proceeds.</div>
+    </div>
+    <div class="stat">
+      <div class="num" id="overallPct">0%</div>
+      <div class="lbl">Overall Complete</div>
+      <div class="overall-bar"><div id="overallBarFill" style="width:0%"></div></div>
+    </div>
+    <div class="stat">
+      <div class="num" id="todayReadout" style="font-size:18px;"></div>
+      <div class="lbl">Today</div>
+    </div>
+  </div>
+
+  <div class="toolbar">
+    <div class="grp">
+      <button class="tbtn primary" id="btnAdd">＋ Add Activity</button>
+      <button class="tbtn" id="btnExpand">Expand All</button>
+      <button class="tbtn" id="btnCollapse">Collapse All</button>
+    </div>
+    <div class="sep"></div>
+    <div class="grp">
+      <span class="zoom-label">Phase</span>
+      <select class="phase-select" id="phaseFilter"><option value="all">All phases</option></select>
+    </div>
+    <div class="sep"></div>
+    <div class="grp">
+      <span class="zoom-label">Zoom</span>
+      <button class="tbtn" id="btnZoomOut">−</button>
+      <button class="tbtn" id="btnZoomIn">+</button>
+      <button class="tbtn" id="btnToday">Jump to Today</button>
+    </div>
+    <div class="flexgap"></div>
+    <div class="grp">
+      <button class="tbtn" id="btnExport">⇩ Save Progress (.json)</button>
+      <button class="tbtn" id="btnExportGithub" title="Downloads a fixed-name file (schedule-progress.json) to check into your GitHub repo next to this HTML file, so the published page auto-loads it for everyone.">⇩ Save for GitHub Pages</button>
+      <button class="tbtn" id="btnImport">⇧ Load Progress</button>
+      <button class="tbtn" id="btnPrint">Print</button>
+      <button class="tbtn warn" id="btnReset">Reset</button>
+    </div>
+  </div>
+
+  <div class="legend-row">
+    <span class="grp-title">Status</span>
+    <span class="legend">
+      <span class="sw"><span class="dot" style="background:var(--go)"></span>Completed</span>
+      <span class="sw"><span class="dot" style="background:var(--steel)"></span>In progress</span>
+      <span class="sw"><span class="dot" style="background:var(--rust)"></span>Behind schedule</span>
+      <span class="sw"><span class="dot" style="background:var(--concrete)"></span>Not started</span>
+    </span>
+    <span class="grp-title" style="margin-left:14px;">Phase</span>
+    <span class="legend" id="phaseLegend"></span>
+  </div>
+
+  <div class="gantt-shell">
+    <div class="scroll-wrap" id="scrollWrap">
+      <div id="ganttInner" style="position:relative;">
+      <table class="gantt">
+        <thead>
+          <tr class="month-row" id="monthRow">
+            <th class="sticky col-num">#</th>
+            <th class="sticky col-name">Activity</th>
+            <th class="sticky col-res">Resource</th>
+            <th class="sticky col-start">Start</th>
+            <th class="sticky col-end">End</th>
+            <th class="sticky col-days">Days</th>
+            <th class="sticky col-prog">Complete</th>
+            <th class="sticky col-del"></th>
+          </tr>
+        </thead>
+        <tbody id="rowsBody"></tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    <span>Reno Store 123 &middot; Detailed Construction Schedule</span>
+    <span id="lastSaved">Not yet saved this session</span>
+  </div>
+</div>
+
+<input type="file" id="importFile" accept="application/json" style="display:none">
+
+<script>
+(function(){
+  "use strict";
+
+  /* ============ Detailed schedule data ============
+     Rebased from the McCoys Canyon Lake schedule (same activities and durations),
+     every date shifted +196 days so Mobilize lands on 2/1/2027 (was 7/20/2026),
+     giving Store Planning enough lead time to clear both Thanksgiving and Christmas
+     and merchandise the store for a 2027 opening. */
+  const DEFAULT_DATA = [
+    {id:1, parent:null, name:'Reno Store 123', phase:'project', isParent:true, milestone:false, progress:0, start:null, end:null, resource:''},
+    {id:12, parent:1, name:'Procurement', phase:'Procurement', isParent:true, milestone:false, progress:0, start:null, end:null, resource:''},
+    {id:14, parent:12, name:'Secure Testing & Inspecting Svcs', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-02-01', end:'2027-02-05', resource:'McCoy\'s Const. Team'},
+    {id:15, parent:12, name:'Project Sign', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-02-01', end:'2027-02-05', resource:'McCoy\'s Const. Team'},
+    {id:13, parent:12, name:'True Look Camera', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-02-19', end:'2027-03-04', resource:'McCoy\'s Const. Team'},
+    {id:37, parent:12, name:'Loose Yard Racking', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-05-15', end:'2027-08-05', resource:'McCoy\'s Const. Team'},
+    {id:34, parent:12, name:'Fleet Equipment', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-05-25', end:'2027-11-07', resource:'McCoy\'s Const. Team'},
+    {id:41, parent:12, name:'Furnishings', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-06-06', end:'2027-06-17', resource:'McCoy\'s Const. Team'},
+    {id:25, parent:12, name:'HVAC Equipment', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-06-20', end:'2027-09-09', resource:'Teinert Construction'},
+    {id:19, parent:12, name:'Automatic Entrances - Sliding Doors', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-07-08', end:'2027-09-28', resource:'CT Darnel'},
+    {id:16, parent:12, name:'Catwalk', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-07-15', end:'2027-08-11', resource:'CT Darnel'},
+    {id:26, parent:12, name:'LED Lights', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-07-18', end:'2027-08-27', resource:'Teinert Construction'},
+    {id:17, parent:12, name:'Roof Jack', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-08-08', end:'2027-08-19', resource:'CT Darnel'},
+    {id:18, parent:12, name:'Dynaco Door', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-08-11', end:'2027-10-11', resource:'CT Darnel'},
+    {id:20, parent:12, name:'Signage', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-08-29', end:'2027-10-29', resource:'McCoy\'s Const. Team'},
+    {id:27, parent:12, name:'Energy Management System', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-08-29', end:'2027-10-07', resource:'Teinert Construction / McCoy\'s'},
+    {id:28, parent:12, name:'Data Rack & Patch Panels', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-08-29', end:'2027-10-07', resource:'Teinert Construction'},
+    {id:29, parent:12, name:'Amplifiers & Speakers', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-08-29', end:'2027-10-07', resource:'Teinert Construction'},
+    {id:30, parent:12, name:'AP Devices', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-08-29', end:'2027-10-07', resource:'McCoy\'s Const. Team'},
+    {id:31, parent:12, name:'Rubber Parking Bumpers', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-08-29', end:'2027-09-16', resource:'Teinert Construction'},
+    {id:32, parent:12, name:'Roof Ladder', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-08-29', end:'2027-10-07', resource:'CT Darnel'},
+    {id:33, parent:12, name:'Plastic Doors - WH', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-08-29', end:'2027-09-09', resource:'CT Darnel'},
+    {id:35, parent:12, name:'Chop Saw', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-08-29', end:'2027-09-09', resource:'Teinert Construction'},
+    {id:36, parent:12, name:'Generator', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-08-29', end:'2027-09-09', resource:'McCoy\'s Const. Team'},
+    {id:38, parent:12, name:'Dumpster', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-08-29', end:'2027-09-09', resource:'McCoy\'s Const. Team'},
+    {id:40, parent:12, name:'Baby Changing Stations', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-09-12', end:'2027-09-23', resource:'Teinert Construction'},
+    {id:23, parent:12, name:'Air Compressor', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-09-30', end:'2027-10-13', resource:'Teinert Construction'},
+    {id:24, parent:12, name:'Yard Bell', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-09-30', end:'2027-10-13', resource:'Teinert Construction'},
+    {id:39, parent:12, name:'Janitorial - Paper Products', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-09-30', end:'2027-10-13', resource:'McCoy\'s Const. Team'},
+    {id:21, parent:12, name:'Knox Box', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-10-07', end:'2027-10-13', resource:'1st Fire'},
+    {id:22, parent:12, name:'Bolt Down Safe', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-10-07', end:'2027-10-13', resource:'Teinert Construction'},
+    {id:42, parent:1, name:'Site', phase:'Site', isParent:true, milestone:false, progress:0, start:null, end:null, resource:''},
+    {id:43, parent:42, name:'Mobilize', phase:'Site', isParent:false, milestone:false, progress:0, start:'2027-02-01', end:'2027-02-03', resource:'Teinert Construction'},
+    {id:44, parent:42, name:'Temp Fence & Erosion Controls', phase:'Site', isParent:false, milestone:false, progress:0, start:'2027-02-03', end:'2027-02-09', resource:'Teinert Construction'},
+    {id:45, parent:42, name:'Clear and Grub Site', phase:'Site', isParent:false, milestone:false, progress:0, start:'2027-02-08', end:'2027-02-19', resource:'Teinert Construction'},
+    {id:46, parent:42, name:'Site Grading/Base', phase:'Site', isParent:false, milestone:false, progress:0, start:'2027-02-22', end:'2027-05-28', resource:'Teinert Construction'},
+    {id:47, parent:42, name:'Site Utilities', phase:'Site', isParent:false, milestone:false, progress:0, start:'2027-04-27', end:'2027-06-07', resource:'Teinert Construction'},
+    {id:48, parent:42, name:'Site Concrete Phase 1', phase:'Site', isParent:false, milestone:false, progress:0, start:'2027-06-07', end:'2027-06-18', resource:'Teinert Construction'},
+    {id:49, parent:42, name:'Site Concrete Phase 2', phase:'Site', isParent:false, milestone:false, progress:0, start:'2027-06-19', end:'2027-07-01', resource:'Teinert Construction'},
+    {id:50, parent:42, name:'Site Concrete Phase 3', phase:'Site', isParent:false, milestone:false, progress:0, start:'2027-07-02', end:'2027-07-15', resource:'Teinert Construction'},
+    {id:51, parent:42, name:'Site Concrete Phase 4', phase:'Site', isParent:false, milestone:false, progress:0, start:'2027-07-16', end:'2027-08-02', resource:'Teinert Construction'},
+    {id:52, parent:42, name:'Site Concrete Phase 5', phase:'Site', isParent:false, milestone:false, progress:0, start:'2027-08-04', end:'2027-08-17', resource:'Teinert Construction'},
+    {id:53, parent:42, name:'Site Concrete Phase 6', phase:'Site', isParent:false, milestone:false, progress:0, start:'2027-08-18', end:'2027-09-02', resource:'Teinert Construction'},
+    {id:54, parent:42, name:'Fencing', phase:'Site', isParent:false, milestone:false, progress:0, start:'2027-09-03', end:'2027-10-13', resource:'Teinert Construction'},
+    {id:55, parent:42, name:'Striping & Accessories', phase:'Site', isParent:false, milestone:false, progress:0, start:'2027-10-02', end:'2027-10-13', resource:'Teinert Construction'},
+    {id:56, parent:42, name:'Landscape & Irrigation', phase:'Site', isParent:false, milestone:false, progress:0, start:'2027-10-09', end:'2027-10-26', resource:'Teinert Construction'},
+    {id:57, parent:1, name:'Sales Floor Building', phase:'Sales Floor Building', isParent:true, milestone:false, progress:0, start:null, end:null, resource:''},
+    {id:58, parent:57, name:'Building Pad', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-03-08', end:'2027-03-18', resource:'Teinert Construction'},
+    {id:60, parent:57, name:'Concrete Footers', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-03-19', end:'2027-04-01', resource:'Teinert Construction'},
+    {id:59, parent:57, name:'Underground Plumbing & Elec.', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-04-02', end:'2027-04-10', resource:'Teinert Construction'},
+    {id:61, parent:57, name:'Concrete Slab', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-04-11', end:'2027-04-18', resource:'Teinert Construction'},
+    {id:62, parent:57, name:'Erect PEMB', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-04-26', end:'2027-06-06', resource:'CT Darnel'},
+    {id:63, parent:57, name:'Interior Structure Framing', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-05-24', end:'2027-06-07', resource:'McCoy\'s Const. Team'},
+    {id:65, parent:57, name:'OH & Wall MEP Rough In', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-06-07', end:'2027-07-11', resource:'Teinert Construction'},
+    {id:66, parent:57, name:'Fire Suppression Rough In', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-06-07', end:'2027-06-27', resource:'1st Fire Protection'},
+    {id:111, parent:57, name:'Store Planning Construction Items', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-06-08', end:'2027-07-01', resource:'McCoy\'s Const. Team'},
+    {id:68, parent:57, name:'Façade Structural Steel', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-07-08', end:'2027-08-02', resource:'CT Darnel'},
+    {id:67, parent:57, name:'Interior Liner Panels', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-07-11', end:'2027-07-25', resource:'CT Darnel'},
+    {id:70, parent:57, name:'Plywood & Paneling', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-07-15', end:'2027-07-26', resource:'McCoy\'s Const. Team'},
+    {id:73, parent:57, name:'Install RTUs', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-07-19', end:'2027-07-25', resource:'Teinert Construction'},
+    {id:74, parent:57, name:'Install Split & AHU', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-07-26', end:'2027-08-01', resource:'Teinert Construction'},
+    {id:76, parent:57, name:'Pull Electrical Wiring', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-07-29', end:'2027-08-16', resource:'Teinert Construction'},
+    {id:77, parent:57, name:'Data Cabling', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-08-01', end:'2027-08-21', resource:'Teinert Construction'},
+    {id:69, parent:57, name:'Façade Stucco & Stone', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-08-04', end:'2027-08-22', resource:'CT Darnel'},
+    {id:78, parent:57, name:'Wire Fire/Burg Alarm', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-08-09', end:'2027-08-22', resource:'1st Fire / Teinert Construction'},
+    {id:79, parent:57, name:'Set Light Fixtures', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-08-19', end:'2027-08-30', resource:'Teinert Construction'},
+    {id:87, parent:57, name:'MEP Trim Out', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-08-19', end:'2027-09-04', resource:'Teinert Construction'},
+    {id:84, parent:57, name:'Install Mez Rack', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-08-20', end:'2027-08-30', resource:'CT Darnel'},
+    {id:85, parent:57, name:'Install Pallet Racking', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-08-20', end:'2027-08-30', resource:'CT Darnel'},
+    {id:71, parent:57, name:'Painting', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-08-31', end:'2027-09-18', resource:'Teinert Construction'},
+    {id:83, parent:57, name:'Set Millwork', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-09-01', end:'2027-09-06', resource:'Teinert Construction'},
+    {id:86, parent:57, name:'Install Pallet Rack Plank', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-09-02', end:'2027-09-07', resource:'McCoy\'s Const. Team'},
+    {id:80, parent:57, name:'Restroom Tile', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-09-19', end:'2027-09-30', resource:'Teinert Construction'},
+    {id:72, parent:57, name:'Prep/Seal/Polish Concrete', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-09-22', end:'2027-09-29', resource:'Teinert Construction'},
+    {id:75, parent:57, name:'Install Doors & Hardware', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-09-22', end:'2027-09-28', resource:'Teinert Construction'},
+    {id:81, parent:57, name:'Set Restroom Fixtures', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-10-03', end:'2027-10-05', resource:'Teinert Construction'},
+    {id:82, parent:57, name:'Set Restroom Partitions', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-10-03', end:'2027-10-08', resource:'Teinert Construction'},
+    {id:88, parent:57, name:'Final Clean', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-10-03', end:'2027-10-08', resource:'Teinert Construction'},
+    {id:89, parent:1, name:'Drive Thru', phase:'Drive Thru', isParent:true, milestone:false, progress:0, start:null, end:null, resource:''},
+    {id:110, parent:89, name:'Building Pad', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-05-20', end:'2027-05-24', resource:'Teinert Construction'},
+    {id:91, parent:89, name:'Concrete Footers', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-05-25', end:'2027-05-30', resource:'Teinert Construction'},
+    {id:92, parent:89, name:'Underground Fire & Elec. Rough In', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-05-25', end:'2027-05-29', resource:'1st Fire / Teinert Construction'},
+    {id:93, parent:89, name:'Concrete Slab', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-05-31', end:'2027-06-06', resource:'Teinert Construction'},
+    {id:94, parent:89, name:'Erect Canopy', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-06-07', end:'2027-06-27', resource:'CT Darnel'},
+    {id:95, parent:89, name:'Frame Fire Riser Room', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-07-02', end:'2027-07-06', resource:'McCoy\'s Const. Team'},
+    {id:97, parent:89, name:'Electrical Rough In', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-07-07', end:'2027-07-25', resource:'Teinert Construction'},
+    {id:98, parent:89, name:'Plywood & Paneling', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-07-26', end:'2027-07-27', resource:'McCoy\'s Const. Team'},
+    {id:99, parent:89, name:'Electrical Trim Out', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-07-30', end:'2027-08-01', resource:'Teinert Construction'},
+    {id:101, parent:89, name:'Set Light Fixtures', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-08-06', end:'2027-08-10', resource:'Teinert Construction'},
+    {id:96, parent:89, name:'Fire Suppression Rough In', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-09-03', end:'2027-09-14', resource:'1st Fire Protection'},
+    {id:100, parent:89, name:'Fire Suppression Trim Out', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-09-17', end:'2027-09-19', resource:'1st Fire Protection'},
+    {id:102, parent:89, name:'Final Coat of Paint', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-09-20', end:'2027-09-24', resource:'Teinert Construction'},
+    {id:106, parent:89, name:'Install Pigeon Hole Rack', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-09-27', end:'2027-10-07', resource:'CT Darnel'},
+    {id:107, parent:89, name:'Install Pallet Rack', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-09-27', end:'2027-10-07', resource:'CT Darnel'},
+    {id:103, parent:89, name:'Cut Shed Bench', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-10-08', end:'2027-10-12', resource:'McCoy\'s Const. Team'},
+    {id:104, parent:89, name:'MDO Board Pigeon Hole', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-10-08', end:'2027-10-12', resource:'McCoy\'s Const. Team'},
+    {id:105, parent:89, name:'Chocks Pallet Rack', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-10-08', end:'2027-10-12', resource:'McCoy\'s Const. Team'},
+    {id:122, parent:1, name:'Inspections, CO, Final Punch', phase:'Inspections & CO', isParent:true, milestone:false, progress:0, start:null, end:null, resource:''},
+    {id:123, parent:122, name:'Electrical Final', phase:'Inspections & CO', isParent:false, milestone:false, progress:0, start:'2027-10-18', end:'2027-10-18', resource:'Teinert Construction'},
+    {id:124, parent:122, name:'Fire Suppression Inspection', phase:'Inspections & CO', isParent:false, milestone:false, progress:0, start:'2027-10-18', end:'2027-10-18', resource:'1st Fire Protection'},
+    {id:125, parent:122, name:'Fire Alarm Inspection', phase:'Inspections & CO', isParent:false, milestone:false, progress:0, start:'2027-10-19', end:'2027-10-19', resource:'1st Fire Protection'},
+    {id:126, parent:122, name:'Building Official Final', phase:'Inspections & CO', isParent:false, milestone:false, progress:0, start:'2027-10-20', end:'2027-10-20', resource:'Teinert Construction/1st Fire'},
+    {id:127, parent:122, name:'Final CO', phase:'Inspections & CO', isParent:false, milestone:false, progress:0, start:'2027-10-23', end:'2027-10-23', resource:'Teinert Construction'},
+    {id:128, parent:122, name:'Punch List', phase:'Inspections & CO', isParent:false, milestone:false, progress:0, start:'2027-10-25', end:'2027-11-06', resource:'Eckermann / Studio 8 / McCoy\'s'},
+    {id:129, parent:122, name:'Turnover Store Planning', phase:'Inspections & CO', isParent:false, milestone:false, progress:0, start:'2027-11-08', end:'2027-11-08', resource:'McCoy\'s Const. Team'},
+    {id:130, parent:1, name:'Store Planning - Merchandising', phase:'Store Planning - Merchandising', isParent:true, milestone:false, progress:0, start:null, end:null, resource:''},
+    {id:131, parent:130, name:'Store Set Up - Week 1', phase:'Store Planning - Merchandising', isParent:false, milestone:false, progress:0, start:'2027-11-08', end:'2027-11-12', resource:'McCoy\'s Store Planning Team'},
+    {id:132, parent:130, name:'Store Set Up - Week 2', phase:'Store Planning - Merchandising', isParent:false, milestone:false, progress:0, start:'2027-11-15', end:'2027-11-19', resource:'McCoy\'s Store Planning Team'},
+    {id:133, parent:130, name:'Store Set Up - Week 3 (Thanksgiving - Reduced Crew)', phase:'Store Planning - Merchandising', isParent:false, milestone:false, progress:0, start:'2027-11-22', end:'2027-11-26', resource:'McCoy\'s Store Planning Team'},
+    {id:134, parent:130, name:'Store Set Up - Week 4', phase:'Store Planning - Merchandising', isParent:false, milestone:false, progress:0, start:'2027-11-29', end:'2027-12-03', resource:'McCoy\'s Store Planning Team'},
+    {id:135, parent:130, name:'Store Set Up - Week 5', phase:'Store Planning - Merchandising', isParent:false, milestone:false, progress:0, start:'2027-12-06', end:'2027-12-10', resource:'McCoy\'s Store Planning Team'},
+    {id:136, parent:130, name:'Store Set Up - Week 6', phase:'Store Planning - Merchandising', isParent:false, milestone:false, progress:0, start:'2027-12-13', end:'2027-12-17', resource:'McCoy\'s Store Planning Team'}
+  ];
+  const PHASE_COLORS = {
+    "project":"#1F4E79",
+    "Procurement":"#1D9E75",
+    "Site":"#BA7517",
+    "Sales Floor Building":"#378ADD",
+    "Drive Thru":"#D85A30",
+    "Inspections & CO":"#E24B4A",
+    "Store Planning - Merchandising":"#8E5BC0"
+  };
+  function phaseColor(phase){ return PHASE_COLORS[phase] || "#7A7A72"; }
+  function tint(hex,alphaHex){ return hex+alphaHex; }
+
+  const MS_DAY = 86400000;
+  const MONTH_NAMES = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  const STICKY_WIDTH = 820;
+
+  let rows = [];
+  let collapsed = {};
+  let pxPerDay = 5;
+  let nextId = 200;
+  let filteredPhase = "all";
+
+  function cloneDefault(){ return DEFAULT_DATA.map(r => ({...r})); }
+  function loadState(){ rows = cloneDefault(); nextId = 200; }
+
+  function dayFromISO(iso){ return Math.floor(new Date(iso+"T00:00:00").getTime()/MS_DAY); }
+  function isoFromDay(day){
+    const d = new Date(day*MS_DAY);
+    const y=d.getUTCFullYear(), m=String(d.getUTCMonth()+1).padStart(2,"0"), dd=String(d.getUTCDate()).padStart(2,"0");
+    return `${y}-${m}-${dd}`;
+  }
+  function fmtDate(iso){
+    if(!iso) return "—";
+    const [y,m,d]=iso.split("-").map(Number);
+    return `${String(m).padStart(2,"0")}/${String(d).padStart(2,"0")}/${String(y).slice(2)}`;
+  }
+  function todayISO(){
+    const d = new Date();
+    return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+  }
+
+  function getChildren(id){ return rows.filter(r => r.parent === id); }
+  function getDescendantLeaves(id){
+    const kids = getChildren(id);
+    let out = [];
+    kids.forEach(k=>{
+      if(k.isParent) out = out.concat(getDescendantLeaves(k.id));
+      else out.push(k);
+    });
+    return out;
+  }
+  function levelOf(row){
+    let lvl=0, p=row.parent;
+    while(p!==null && p!==undefined){
+      const parentRow = rows.find(r=>r.id===p);
+      if(!parentRow) break;
+      lvl++; p=parentRow.parent;
+    }
+    return lvl;
+  }
+
+  function computeParentAggregate(row){
+    const leaves = getDescendantLeaves(row.id);
+    if(leaves.length===0) return {progress:row.progress||0, start:todayISO(), end:todayISO()};
+    let totalW=0, doneW=0;
+    let minStart=null, maxEnd=null;
+    leaves.forEach(l=>{
+      const w = Math.max(dayFromISO(l.end)-dayFromISO(l.start)+1, 1);
+      totalW += w;
+      doneW += w * (l.progress/100);
+      const s = dayFromISO(l.start), e = dayFromISO(l.end);
+      if(minStart===null || s<minStart) minStart=s;
+      if(maxEnd===null || e>maxEnd) maxEnd=e;
+    });
+    return {
+      progress: totalW>0 ? Math.round((doneW/totalW)*100) : 0,
+      start: isoFromDay(minStart),
+      end: isoFromDay(maxEnd)
+    };
+  }
+
+  function statusOf(startISOv, endISOv, progress){
+    if(progress>=100) return "completed";
+    const t = todayISO();
+    if(t > endISOv) return "overdue";
+    if(t >= startISOv) return "progress";
+    return "upcoming";
+  }
+  function statusColorVar(status){
+    return {completed:"var(--go)",overdue:"var(--rust)",progress:"var(--steel)",upcoming:"var(--concrete)"}[status];
+  }
+
+  /* ============ Range + scale ============ */
+  function computeRange(){
+    let minD=null,maxD=null;
+    rows.filter(r=>!r.isParent).forEach(r=>{
+      const s = dayFromISO(r.start), e = dayFromISO(r.end);
+      if(minD===null||s<minD) minD=s;
+      if(maxD===null||e>maxD) maxD=e;
+    });
+    const todayD = dayFromISO(todayISO());
+    minD = Math.min(minD, todayD - 14);
+    maxD = Math.max(maxD, todayD + 14);
+    minD -= 7; maxD += 7;
+    return {minD,maxD};
+  }
+
+  /* ============ Rendering ============ */
+  let monthColCount = 1;
+
+  function render(){
+    const {minD,maxD} = computeRange();
+    const totalDays = maxD-minD+1;
+    const totalWidth = totalDays*pxPerDay;
+
+    renderMonthHeader(minD,maxD);
+    renderRows(minD,totalWidth);
+    renderOverall();
+    renderTodayLine(minD);
+  }
+
+  function renderMonthHeader(minD,maxD){
+    const row = document.getElementById("monthRow");
+    while(row.children.length>8) row.removeChild(row.lastChild);
+
+    let cursorDay = minD;
+    const endDay = maxD;
+    let count = 0;
+    while(cursorDay<=endDay){
+      const d = new Date(cursorDay*MS_DAY);
+      const y=d.getUTCFullYear(), m=d.getUTCMonth();
+      const firstOfMonth = Date.UTC(y,m,1)/MS_DAY;
+      const firstOfNext = Date.UTC(y,m+1,1)/MS_DAY;
+      const visibleStart = Math.max(firstOfMonth,cursorDay);
+      const visibleEnd = Math.min(firstOfNext-1,endDay);
+      const daysVisible = visibleEnd-visibleStart+1;
+      const th = document.createElement("th");
+      th.textContent = MONTH_NAMES[m]+" "+y;
+      th.style.width = (daysVisible*pxPerDay)+"px";
+      th.style.minWidth = th.style.width;
+      row.appendChild(th);
+      cursorDay = firstOfNext;
+      count++;
+    }
+    monthColCount = Math.max(count,1);
+  }
+
+  function isVisible(row){
+    if(filteredPhase!=="all" && row.id!==1){
+      if(row.phase!==filteredPhase) return false;
+    }
+    let p = row.parent;
+    while(p!==null && p!==undefined){
+      if(collapsed[p]) return false;
+      const parentRow = rows.find(r=>r.id===p);
+      if(!parentRow) break;
+      p = parentRow.parent;
+    }
+    return true;
+  }
+
+  function renderRows(minD,totalWidth){
+    const body = document.getElementById("rowsBody");
+    body.innerHTML = "";
+
+    rows.forEach(row=>{
+      if(!isVisible(row)) return;
+      const tr = document.createElement("tr");
+      tr.dataset.id = row.id;
+      const lvl = levelOf(row);
+      tr.className = "level-"+lvl+(row.isParent?" is-parent":"");
+
+      let effStart, effEnd, effProgress;
+      if(row.isParent){
+        const agg = computeParentAggregate(row);
+        effStart = agg.start; effEnd = agg.end; effProgress = agg.progress;
+        row.progress = effProgress;
+      } else {
+        effStart = row.start; effEnd = row.end; effProgress = row.progress;
+      }
+      const status = statusOf(effStart,effEnd,effProgress);
+      const pColor = phaseColor(row.phase);
+
+      // #
+      const tdNum = document.createElement("td");
+      tdNum.className = "sticky col-num";
+      tdNum.textContent = row.id;
+      tr.appendChild(tdNum);
+
+      // name
+      const tdName = document.createElement("td");
+      tdName.className = "sticky col-name";
+      const wrap = document.createElement("div");
+      wrap.className = "name-cell";
+      wrap.style.paddingLeft = (lvl*12)+"px";
+      const hasKids = getChildren(row.id).length>0;
+      if(hasKids){
+        const btn = document.createElement("button");
+        btn.className = "twisty"+(collapsed[row.id]?" collapsed":"");
+        btn.innerHTML = "▾";
+        btn.title = "Expand / collapse";
+        btn.addEventListener("click",()=>{ collapsed[row.id]=!collapsed[row.id]; render(); });
+        wrap.appendChild(btn);
+      } else {
+        const dot = document.createElement("span");
+        dot.className="phase-dot"; dot.style.background=pColor;
+        wrap.appendChild(dot);
+      }
+      const nameInput = document.createElement("input");
+      nameInput.className="name-input"; nameInput.value=row.name;
+      nameInput.addEventListener("change",e=>{ row.name=e.target.value; });
+      wrap.appendChild(nameInput);
+      tdName.appendChild(wrap);
+      tr.appendChild(tdName);
+
+      // resource
+      const tdRes = document.createElement("td");
+      tdRes.className="sticky col-res";
+      const resInput = document.createElement("input");
+      resInput.className="res-input"; resInput.value=row.resource||"";
+      resInput.placeholder = row.isParent ? "" : "Resource / sub";
+      resInput.disabled = !!row.isParent;
+      resInput.addEventListener("change",e=>{ row.resource=e.target.value; });
+      tdRes.appendChild(resInput);
+      tr.appendChild(tdRes);
+
+      // start
+      const tdStart = document.createElement("td");
+      tdStart.className="sticky col-start";
+      const startInput = document.createElement("input");
+      startInput.type="date"; startInput.className="date-input"; startInput.value=effStart;
+      startInput.disabled = !!row.isParent;
+      startInput.addEventListener("change",e=>{
+        row.start=e.target.value;
+        if(dayFromISO(row.end) < dayFromISO(row.start)) row.end = row.start;
+        render();
+      });
+      tdStart.appendChild(startInput);
+      tr.appendChild(tdStart);
+
+      // end
+      const tdEnd = document.createElement("td");
+      tdEnd.className="sticky col-end";
+      const endInput = document.createElement("input");
+      endInput.type="date"; endInput.className="date-input"; endInput.value=effEnd;
+      endInput.disabled = !!row.isParent;
+      endInput.addEventListener("change",e=>{
+        row.end=e.target.value;
+        if(dayFromISO(row.end) < dayFromISO(row.start)) row.start = row.end;
+        render();
+      });
+      tdEnd.appendChild(endInput);
+      tr.appendChild(tdEnd);
+
+      // days (readonly)
+      const tdDays = document.createElement("td");
+      tdDays.className="sticky col-days";
+      const daysEl = document.createElement("div");
+      daysEl.className="days-readout";
+      daysEl.textContent = Math.max(dayFromISO(effEnd)-dayFromISO(effStart)+1,1);
+      tdDays.appendChild(daysEl);
+      tr.appendChild(tdDays);
+
+      // progress
+      const tdProg = document.createElement("td");
+      tdProg.className="sticky col-prog";
+      const progWrap = document.createElement("div");
+      progWrap.className="prog-wrap";
+      const progInput = document.createElement("input");
+      progInput.type="number"; progInput.min="0"; progInput.max="100"; progInput.step="5";
+      progInput.className="num-input prog-input"; progInput.value=effProgress;
+      progInput.disabled = !!row.isParent;
+      progInput.addEventListener("change",e=>{
+        let v = parseInt(e.target.value||"0",10);
+        v = Math.max(0,Math.min(100,v));
+        row.progress=v; render();
+      });
+      const mini = document.createElement("div");
+      mini.className="prog-mini";
+      const miniFill = document.createElement("div");
+      miniFill.style.width=effProgress+"%";
+      miniFill.style.background = statusColorVar(status);
+      mini.appendChild(miniFill);
+      progWrap.appendChild(progInput);
+      progWrap.appendChild(mini);
+      tdProg.appendChild(progWrap);
+      tr.appendChild(tdProg);
+
+      // delete
+      const tdDel = document.createElement("td");
+      tdDel.className="sticky col-del";
+      if(!row.isParent && row.parent!==null){
+        const delBtn = document.createElement("button");
+        delBtn.className="del-btn"; delBtn.innerHTML="✕"; delBtn.title="Remove activity";
+        delBtn.addEventListener("click",()=>{
+          if(confirm('Remove "'+row.name+'" from the schedule?')){
+            rows = rows.filter(r=>r.id!==row.id);
+            render();
+          }
+        });
+        tdDel.appendChild(delBtn);
+      }
+      tr.appendChild(tdDel);
+
+      // timeline
+      const tdTl = document.createElement("td");
+      tdTl.className="timeline-td";
+      tdTl.colSpan = monthColCount;
+      tdTl.style.width = totalWidth+"px";
+      const outer = document.createElement("div");
+      outer.className="timeline-outer";
+      outer.style.width = totalWidth+"px";
+
+      const startDay = dayFromISO(effStart);
+      const endDay = dayFromISO(effEnd);
+      const leftPx = (startDay-minD)*pxPerDay;
+      const widthPx = Math.max((endDay-startDay+1)*pxPerDay, 4);
+
+      const track = document.createElement("div");
+      track.className="bar-track";
+      track.style.left=leftPx+"px"; track.style.width=widthPx+"px";
+      if(!row.isParent) track.style.background = tint(pColor,"29");
+      track.title = row.name+"  "+fmtDate(effStart)+" \u2192 "+fmtDate(effEnd)+"  ("+effProgress+"%)"+(row.resource?"  \u00b7 "+row.resource:"");
+      const fill = document.createElement("div");
+      fill.className="bar-fill "+"status-"+status;
+      fill.style.width = (row.isParent ? 100 : effProgress)+"%";
+      track.appendChild(fill);
+      outer.appendChild(track);
+
+      if(widthPx < 60){
+        const lbl = document.createElement("div");
+        lbl.className="bar-label";
+        lbl.style.left=(leftPx+widthPx+6)+"px";
+        lbl.textContent = row.name;
+        outer.appendChild(lbl);
+      }
+
+      tdTl.appendChild(outer);
+      tr.appendChild(tdTl);
+
+      body.appendChild(tr);
+    });
+  }
+
+  function renderOverall(){
+    const leaves = rows.filter(r=>!r.isParent);
+    let totalW=0, doneW=0;
+    leaves.forEach(l=>{
+      const w = Math.max(dayFromISO(l.end)-dayFromISO(l.start)+1, 1);
+      totalW += w; doneW += w*(l.progress/100);
+    });
+    const pct = totalW>0 ? Math.round((doneW/totalW)*100) : 0;
+    document.getElementById("overallPct").textContent = pct+"%";
+    document.getElementById("overallBarFill").style.width = pct+"%";
+    document.getElementById("todayReadout").textContent = fmtDate(todayISO());
+  }
+
+  function renderTodayLine(minD){
+    const inner = document.getElementById("ganttInner");
+    let line = document.getElementById("todayLine");
+    let flag = document.getElementById("todayFlag");
+    if(!line){
+      line = document.createElement("div");
+      line.id = "todayLine"; line.className = "today-line";
+      inner.appendChild(line);
+    }
+    if(!flag){
+      flag = document.createElement("div");
+      flag.id = "todayFlag"; flag.className = "today-flag";
+      flag.textContent = "TODAY";
+      inner.appendChild(flag);
+    }
+    const todayD = dayFromISO(todayISO());
+    const left = STICKY_WIDTH + (todayD-minD)*pxPerDay;
+    line.style.left = left+"px";
+    flag.style.left = left+"px";
+  }
+
+  function renderLegend(){
+    const el = document.getElementById("phaseLegend");
+    el.innerHTML = Object.keys(PHASE_COLORS).filter(p=>p!=="project").map(p=>
+      `<span class="sw"><span class="dot" style="background:${PHASE_COLORS[p]}"></span>${p}</span>`
+    ).join("");
+  }
+
+  function populatePhaseFilter(){
+    const sel = document.getElementById("phaseFilter");
+    sel.innerHTML = '<option value="all">All phases</option>';
+    rows.filter(r=>r.isParent && r.id!==1).forEach(p=>{
+      const o = document.createElement("option");
+      o.value = p.phase; o.textContent = p.name;
+      sel.appendChild(o);
+    });
+  }
+
+  /* ============ Toolbar actions ============ */
+  document.getElementById("btnAdd").addEventListener("click",()=>{
+    const parentChoices = rows.filter(r=>r.isParent && r.id!==1);
+    const names = parentChoices.map((p,i)=>i+": "+p.name).join("\n");
+    let idx = prompt("Add new activity under which phase?\n\n"+names+"\n\nEnter the number:", "0");
+    if(idx===null) return;
+    idx = parseInt(idx,10);
+    const parentRow = parentChoices[idx] || parentChoices[0];
+    const newRow = {
+      id: nextId++, parent: parentRow.id, name:"New Activity", phase: parentRow.phase,
+      isParent:false, milestone:false, progress:0,
+      start: todayISO(), end: isoFromDay(dayFromISO(todayISO())+4), resource:""
+    };
+    let insertAt = -1;
+    for(let i=rows.length-1;i>=0;i--){
+      if(rows[i].parent===parentRow.id || rows[i].id===parentRow.id){ insertAt=i+1; break; }
+    }
+    if(insertAt===-1) insertAt = rows.length;
+    rows.splice(insertAt,0,newRow);
+    render();
+  });
+
+  document.getElementById("btnExpand").addEventListener("click",()=>{ collapsed={}; render(); });
+  document.getElementById("btnCollapse").addEventListener("click",()=>{
+    rows.filter(r=>r.isParent).forEach(r=>collapsed[r.id]=true);
+    render();
+  });
+
+  document.getElementById("phaseFilter").addEventListener("change",e=>{
+    filteredPhase = e.target.value; render();
+  });
+
+  document.getElementById("btnZoomIn").addEventListener("click",()=>{ pxPerDay=Math.min(pxPerDay+2,16); render(); });
+  document.getElementById("btnZoomOut").addEventListener("click",()=>{ pxPerDay=Math.max(pxPerDay-1,2); render(); });
+
+  document.getElementById("btnToday").addEventListener("click",()=>{
+    const {minD} = computeRange();
+    const todayD = dayFromISO(todayISO());
+    const wrap = document.getElementById("scrollWrap");
+    wrap.scrollLeft = Math.max(0,(todayD-minD)*pxPerDay - 260);
+  });
+
+  document.getElementById("btnPrint").addEventListener("click",()=>window.print());
+
+  document.getElementById("btnReset").addEventListener("click",()=>{
+    if(confirm("Reset the schedule back to the original baseline? Any progress you've logged will be lost unless you've saved a .json file.")){
+      loadState(); collapsed={}; filteredPhase="all";
+      document.getElementById("phaseFilter").value="all";
+      populatePhaseFilter(); render();
+    }
+  });
+
+  function buildExportPayload(){
+    return {
+      exportedAt: new Date().toISOString(),
+      project: "Reno Store 123 — Detailed Construction Schedule",
+      rows: rows.map(r=>({id:r.id,parent:r.parent,name:r.name,phase:r.phase,isParent:r.isParent,progress:r.progress,start:r.start,end:r.end,resource:r.resource}))
+    };
+  }
+  function downloadJSON(payload,filename){
+    const blob = new Blob([JSON.stringify(payload,null,2)],{type:"application/json"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href=url; a.download = filename;
+    document.body.appendChild(a); a.click(); a.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  document.getElementById("btnExport").addEventListener("click",()=>{
+    const stamp = todayISO();
+    downloadJSON(buildExportPayload(), "reno-store-123-detailed-schedule-"+stamp+".json");
+    document.getElementById("lastSaved").textContent = "Saved just now ("+stamp+")";
+  });
+
+  document.getElementById("btnExportGithub").addEventListener("click",()=>{
+    downloadJSON(buildExportPayload(), "schedule-progress.json");
+    document.getElementById("lastSaved").textContent = "Downloaded schedule-progress.json -- commit it to GitHub next to this HTML file";
+  });
+
+  document.getElementById("btnImport").addEventListener("click",()=>{
+    document.getElementById("importFile").click();
+  });
+  document.getElementById("importFile").addEventListener("change",(e)=>{
+    const file = e.target.files[0];
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = (ev)=>{
+      try{
+        const data = JSON.parse(ev.target.result);
+        if(!data.rows || !Array.isArray(data.rows)) throw new Error("Unrecognized file format");
+        rows = data.rows.map(r=>({...r}));
+        nextId = Math.max(200, ...rows.map(r=>r.id+1));
+        collapsed = {};
+        populatePhaseFilter();
+        render();
+        document.getElementById("lastSaved").textContent = "Loaded from file";
+      }catch(err){
+        alert("Couldn't read that file: "+err.message);
+      }
+    };
+    reader.readAsText(file);
+    e.target.value = "";
+  });
+
+  /* ============ Init ============ */
+  /* On a real web host (e.g. GitHub Pages), auto-load a checked-in
+     "schedule-progress.json" sitting next to this file, so anyone who
+     opens the published link sees the latest saved progress automatically
+     -- not just whoever manually clicks "Load Progress". If it isn't
+     found (or this file was opened locally via file://, where fetch is
+     blocked), it just falls back to the original baseline schedule. */
+  loadState();
+  renderLegend();
+  populatePhaseFilter();
+  render();
+
+  fetch("schedule-progress.json", {cache:"no-store"})
+    .then(r => r.ok ? r.json() : Promise.reject())
+    .then(data => {
+      if(!data || !Array.isArray(data.rows)) return Promise.reject();
+      rows = data.rows.map(r=>({...r}));
+      nextId = Math.max(200, ...rows.map(r=>r.id+1));
+      collapsed = {};
+      populatePhaseFilter();
+      render();
+      const stamp = data.exportedAt ? new Date(data.exportedAt).toLocaleString() : "";
+      document.getElementById("lastSaved").textContent = "Loaded saved progress from schedule-progress.json"+(stamp?" ("+stamp+")":"");
+    })
+    .catch(()=>{
+      document.getElementById("lastSaved").textContent = "Showing baseline schedule -- no schedule-progress.json found next to this file";
+    });
+})();
+</script>
+</body>
+</html>
