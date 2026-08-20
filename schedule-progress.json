@@ -157,15 +157,59 @@
       "resource": "CT Darnel"
     },
     {
-      "id": 20,
+      "id": 33,
       "parent": 12,
-      "name": "Signage",
+      "name": "Plastic Doors - WH",
       "phase": "Procurement",
       "isParent": false,
       "progress": 0,
       "start": "2027-02-14",
-      "end": "2027-04-16",
+      "end": "2027-02-25",
+      "resource": "CT Darnel"
+    },
+    {
+      "id": 35,
+      "parent": 12,
+      "name": "Chop Saw",
+      "phase": "Procurement",
+      "isParent": false,
+      "progress": 0,
+      "start": "2027-02-14",
+      "end": "2027-02-25",
+      "resource": "Teinert Construction"
+    },
+    {
+      "id": 36,
+      "parent": 12,
+      "name": "Generator",
+      "phase": "Procurement",
+      "isParent": false,
+      "progress": 0,
+      "start": "2027-02-14",
+      "end": "2027-02-25",
       "resource": "McCoy's Const. Team"
+    },
+    {
+      "id": 38,
+      "parent": 12,
+      "name": "Dumpster",
+      "phase": "Procurement",
+      "isParent": false,
+      "progress": 0,
+      "start": "2027-02-14",
+      "end": "2027-02-25",
+      "resource": "McCoy's Const. Team"
+    },
+    {
+      "id": 31,
+      "parent": 12,
+      "name": "Rubber Parking Bumpers",
+      "phase": "Procurement",
+      "isParent": false,
+      "progress": 0,
+      "start": "2027-02-14",
+      "end": "2027-03-04",
+      "resource": "Teinert Construction"
     },
     {
       "id": 27,
@@ -212,17 +256,6 @@
       "resource": "McCoy's Const. Team"
     },
     {
-      "id": 31,
-      "parent": 12,
-      "name": "Rubber Parking Bumpers",
-      "phase": "Procurement",
-      "isParent": false,
-      "progress": 0,
-      "start": "2027-02-14",
-      "end": "2027-03-04",
-      "resource": "Teinert Construction"
-    },
-    {
       "id": 32,
       "parent": 12,
       "name": "Roof Ladder",
@@ -234,47 +267,14 @@
       "resource": "CT Darnel"
     },
     {
-      "id": 33,
+      "id": 20,
       "parent": 12,
-      "name": "Plastic Doors - WH",
+      "name": "Signage",
       "phase": "Procurement",
       "isParent": false,
       "progress": 0,
       "start": "2027-02-14",
-      "end": "2027-02-25",
-      "resource": "CT Darnel"
-    },
-    {
-      "id": 35,
-      "parent": 12,
-      "name": "Chop Saw",
-      "phase": "Procurement",
-      "isParent": false,
-      "progress": 0,
-      "start": "2027-02-14",
-      "end": "2027-02-25",
-      "resource": "Teinert Construction"
-    },
-    {
-      "id": 36,
-      "parent": 12,
-      "name": "Generator",
-      "phase": "Procurement",
-      "isParent": false,
-      "progress": 0,
-      "start": "2027-02-14",
-      "end": "2027-02-25",
-      "resource": "McCoy's Const. Team"
-    },
-    {
-      "id": 38,
-      "parent": 12,
-      "name": "Dumpster",
-      "phase": "Procurement",
-      "isParent": false,
-      "progress": 0,
-      "start": "2027-02-14",
-      "end": "2027-02-25",
+      "end": "2027-04-16",
       "resource": "McCoy's Const. Team"
     },
     {
@@ -355,6 +355,17 @@
       "resource": ""
     },
     {
+      "id": 113,
+      "parent": 42,
+      "name": "Notice to Proceed",
+      "phase": "Site",
+      "isParent": false,
+      "progress": 100,
+      "start": "2026-07-20",
+      "end": "2026-07-20",
+      "resource": ""
+    },
+    {
       "id": 43,
       "parent": 42,
       "name": "Mobilize",
@@ -393,7 +404,7 @@
       "name": "Site Grading/Base",
       "phase": "Site",
       "isParent": false,
-      "progress": 0,
+      "progress": 10,
       "start": "2026-08-10",
       "end": "2026-11-13",
       "resource": "Teinert Construction"
@@ -407,6 +418,17 @@
       "progress": 0,
       "start": "2026-10-13",
       "end": "2026-11-23",
+      "resource": "Teinert Construction"
+    },
+    {
+      "id": 112,
+      "parent": 42,
+      "name": "Retaining Walls",
+      "phase": "Site",
+      "isParent": false,
+      "progress": 0,
+      "start": "2026-11-19",
+      "end": "2026-12-30",
       "resource": "Teinert Construction"
     },
     {
@@ -525,7 +547,7 @@
       "name": "Building Pad",
       "phase": "Sales Floor Building",
       "isParent": false,
-      "progress": 0,
+      "progress": 25,
       "start": "2026-08-24",
       "end": "2026-09-03",
       "resource": "Teinert Construction"
@@ -586,17 +608,6 @@
       "resource": "McCoy's Const. Team"
     },
     {
-      "id": 65,
-      "parent": 57,
-      "name": "OH & Wall MEP Rough In",
-      "phase": "Sales Floor Building",
-      "isParent": false,
-      "progress": 0,
-      "start": "2026-11-23",
-      "end": "2026-12-27",
-      "resource": "Teinert Construction"
-    },
-    {
       "id": 66,
       "parent": 57,
       "name": "Fire Suppression Rough In",
@@ -606,6 +617,17 @@
       "start": "2026-11-23",
       "end": "2026-12-13",
       "resource": "1st Fire Protection"
+    },
+    {
+      "id": 65,
+      "parent": 57,
+      "name": "OH & Wall MEP Rough In",
+      "phase": "Sales Floor Building",
+      "isParent": false,
+      "progress": 0,
+      "start": "2026-11-23",
+      "end": "2026-12-27",
+      "resource": "Teinert Construction"
     },
     {
       "id": 111,
@@ -806,17 +828,6 @@
       "resource": "Teinert Construction"
     },
     {
-      "id": 72,
-      "parent": 57,
-      "name": "Prep/Seal/Polish Concrete",
-      "phase": "Sales Floor Building",
-      "isParent": false,
-      "progress": 0,
-      "start": "2027-03-10",
-      "end": "2027-03-17",
-      "resource": "Teinert Construction"
-    },
-    {
       "id": 75,
       "parent": 57,
       "name": "Install Doors & Hardware",
@@ -825,6 +836,17 @@
       "progress": 0,
       "start": "2027-03-10",
       "end": "2027-03-16",
+      "resource": "Teinert Construction"
+    },
+    {
+      "id": 72,
+      "parent": 57,
+      "name": "Prep/Seal/Polish Concrete",
+      "phase": "Sales Floor Building",
+      "isParent": false,
+      "progress": 0,
+      "start": "2027-03-10",
+      "end": "2027-03-17",
       "resource": "Teinert Construction"
     },
     {
@@ -883,17 +905,6 @@
       "resource": "Teinert Construction"
     },
     {
-      "id": 91,
-      "parent": 89,
-      "name": "Concrete Footers",
-      "phase": "Drive Thru",
-      "isParent": false,
-      "progress": 0,
-      "start": "2026-11-10",
-      "end": "2026-11-15",
-      "resource": "Teinert Construction"
-    },
-    {
       "id": 92,
       "parent": 89,
       "name": "Underground Fire & Elec. Rough In",
@@ -903,6 +914,17 @@
       "start": "2026-11-10",
       "end": "2026-11-14",
       "resource": "1st Fire / Teinert Construction"
+    },
+    {
+      "id": 91,
+      "parent": 89,
+      "name": "Concrete Footers",
+      "phase": "Drive Thru",
+      "isParent": false,
+      "progress": 0,
+      "start": "2026-11-10",
+      "end": "2026-11-15",
+      "resource": "Teinert Construction"
     },
     {
       "id": 93,
@@ -1156,28 +1178,6 @@
       "start": "2027-04-26",
       "end": "2027-04-26",
       "resource": "McCoy's Const. Team"
-    },
-    {
-      "id": 113,
-      "parent": 42,
-      "name": "Notice to Proceed",
-      "phase": "Site",
-      "isParent": false,
-      "progress": 100,
-      "start": "2026-07-20",
-      "end": "2026-07-20",
-      "resource": ""
-    },
-    {
-      "id": 112,
-      "parent": 42,
-      "name": "Retaining Walls",
-      "phase": "Site",
-      "isParent": false,
-      "progress": 0,
-      "start": "2026-11-19",
-      "end": "2026-12-30",
-      "resource": "Teinert Construction"
     },
     {
       "id": 114,
