@@ -1,6 +1,6 @@
 {
-  "exportedAt": "2026-08-20T14:41:34.845Z",
-  "project": "McCoys Canyon Lake — Detailed Construction Schedule",
+  "exportedAt": "2026-08-04T13:23:44.774Z",
+  "project": "McCoys Canyon Lake \u2014 Detailed Construction Schedule",
   "rows": [
     {
       "id": 1,
@@ -8,7 +8,7 @@
       "name": "McCoys Canyon Lake",
       "phase": "project",
       "isParent": true,
-      "progress": 3,
+      "progress": 0,
       "start": null,
       "end": null,
       "resource": ""
@@ -19,7 +19,7 @@
       "name": "Procurement",
       "phase": "Procurement",
       "isParent": true,
-      "progress": 1,
+      "progress": 0,
       "start": null,
       "end": null,
       "resource": ""
@@ -349,7 +349,7 @@
       "name": "Site",
       "phase": "Site",
       "isParent": true,
-      "progress": 11,
+      "progress": 0,
       "start": null,
       "end": null,
       "resource": ""
@@ -393,7 +393,7 @@
       "name": "Site Grading/Base",
       "phase": "Site",
       "isParent": false,
-      "progress": 15,
+      "progress": 0,
       "start": "2026-08-10",
       "end": "2026-11-13",
       "resource": "Teinert Construction"
@@ -514,7 +514,7 @@
       "name": "Sales Floor Building",
       "phase": "Sales Floor Building",
       "isParent": true,
-      "progress": 1,
+      "progress": 0,
       "start": null,
       "end": null,
       "resource": ""
@@ -525,7 +525,7 @@
       "name": "Building Pad",
       "phase": "Sales Floor Building",
       "isParent": false,
-      "progress": 25,
+      "progress": 0,
       "start": "2026-08-24",
       "end": "2026-09-03",
       "resource": "Teinert Construction"
@@ -621,7 +621,7 @@
     {
       "id": 68,
       "parent": 57,
-      "name": "Façade Structural Steel",
+      "name": "Fa\u00e7ade Structural Steel",
       "phase": "Sales Floor Building",
       "isParent": false,
       "progress": 0,
@@ -698,7 +698,7 @@
     {
       "id": 69,
       "parent": 57,
-      "name": "Façade Stucco & Stone",
+      "name": "Fa\u00e7ade Stucco & Stone",
       "phase": "Sales Floor Building",
       "isParent": false,
       "progress": 0,
@@ -1178,6 +1178,28 @@
       "start": "2026-11-19",
       "end": "2026-12-30",
       "resource": "Teinert Construction"
+    },
+    {
+      "id": 114,
+      "parent": 122,
+      "name": "Store Planning - Merchandising",
+      "phase": "Inspections & CO",
+      "isParent": false,
+      "progress": 0,
+      "start": "2027-04-27",
+      "end": "2027-05-31",
+      "resource": "McCoy's Const. Team"
+    },
+    {
+      "id": 115,
+      "parent": 122,
+      "name": "Soft Open Range",
+      "phase": "Inspections & CO",
+      "isParent": false,
+      "progress": 0,
+      "start": "2027-06-07",
+      "end": "2027-06-21",
+      "resource": "McCoy's / Teinert"
     }
   ]
 }
