@@ -3,11 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reno Store 123 — Construction Detailed Schedule</title>
+<title>McCoys Canyon Lake — Construction - Detailed Schedule</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --ink:#14432B;
@@ -307,71 +306,10 @@
 
   @media print{
     body{background:#fff;}
-    .toolbar, .legend-row, .main-tab-nav{display:none;}
+    .toolbar, .legend-row{display:none;}
     .sheet{padding:0;max-width:none;}
     .scroll-wrap{max-height:none;overflow:visible;}
   }
-
-  /* ---------- Main tab navigation (Schedule / Cash Flow) ---------- */
-  .main-tab-nav{
-    display:flex; gap:4px; background:var(--paper-raised);
-    border:1px solid var(--line); border-bottom:none; border-radius:6px 6px 0 0;
-    padding:0 14px; margin-top:12px;
-  }
-  .main-tab-btn{
-    font-family:'Inter',sans-serif; font-size:12.5px; font-weight:600;
-    letter-spacing:.02em; text-transform:uppercase; color:var(--ink-soft);
-    background:none; border:none; border-bottom:3px solid transparent;
-    padding:12px 16px; cursor:pointer; transition:color .15s;
-  }
-  .main-tab-btn:hover{ color:var(--ink); }
-  .main-tab-btn.active{ color:var(--ink); border-bottom-color:var(--rust); }
-  .main-tab-panel{ display:none; }
-  .main-tab-panel.active{ display:block; }
-
-  /* ---------- Scoped styles for the Cash Flow tab (ported from the capital-proposal doc) ---------- */
-  .cf-scope{
-    --cf-navy:#1B4D2E; --cf-navy-mid:#204a2e; --cf-navy-light:#2d7346;
-    --cf-steel:#3d8b5e; --cf-steel-pale:#eaf3ed;
-    --cf-amber:#F5C300; --cf-amber-dark:#c9a000; --cf-amber-pale:#fef9e0;
-    --cf-white:#ffffff; --cf-gray-50:#f6f6f4; --cf-gray-100:#ececE8;
-    --cf-pos:#1f7a4d; --cf-pos-bg:#e8f5ee; --cf-neg:#b3341f; --cf-neg-bg:#fbeae6;
-    --cf-text:#1c1f1a; --cf-muted:#5b6058; --cf-border:#dbdbd3;
-    --cf-shadow:0 1px 3px rgba(27,77,46,0.08), 0 1px 2px rgba(27,77,46,0.06);
-    font-family:'Inter',sans-serif; font-size:14px; line-height:1.5; color:var(--cf-text);
-    background:var(--paper); border:1px solid var(--line); border-radius:0 0 6px 6px;
-    padding:20px 20px 26px;
-  }
-  .cf-scope .section-header{display:flex;align-items:center;gap:14px;margin:0 0 16px;}
-  .cf-scope .section-header h2{font-family:'Oswald',sans-serif;font-size:18px;font-weight:600;text-transform:uppercase;letter-spacing:.4px;color:var(--cf-navy);white-space:nowrap;}
-  .cf-scope .section-line{flex:1;height:1px;background:linear-gradient(90deg,var(--cf-border),transparent);}
-  .cf-scope .section-badge{font-family:'Oswald',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;color:var(--cf-steel);background:var(--cf-steel-pale);padding:5px 12px;border-radius:20px;white-space:nowrap;}
-  .cf-scope p.lede{color:var(--cf-muted);max-width:820px;margin:0 0 18px;font-size:13.5px;}
-  .cf-scope .panel{background:var(--cf-white);border:1px solid var(--cf-border);border-radius:6px;box-shadow:var(--cf-shadow);overflow:hidden;margin-bottom:16px;}
-  .cf-scope .panel-header{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--cf-gray-50);border-bottom:1px solid var(--cf-border);padding:11px 16px;font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.3px;color:var(--cf-navy);}
-  .cf-scope .panel-body{padding:18px 20px;}
-  .cf-scope .controls{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
-  @media(max-width:900px){.cf-scope .controls{grid-template-columns:repeat(2,1fr);}}
-  .cf-scope .ctrl label{display:block;font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--cf-muted);margin-bottom:7px;}
-  .cf-scope .ctrl input[type="month"]{width:100%;padding:8px 10px;border:1px solid var(--cf-border);border-radius:4px;font-family:'IBM Plex Mono',monospace;font-size:13px;background:var(--cf-white);color:var(--cf-text);}
-  .cf-scope .toggle-row{display:flex;align-items:center;gap:8px;}
-  .cf-scope .toggle-row input{width:16px;height:16px;accent-color:var(--cf-steel);}
-  .cf-scope .chart-wrap{position:relative;}
-  .cf-scope .heatmap-table{width:100%;border-collapse:collapse;font-size:12.5px;}
-  .cf-scope .heatmap-table th{background:var(--cf-gray-50);color:var(--cf-muted);font-size:10.5px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;text-align:center;padding:9px 8px;border-bottom:1px solid var(--cf-border);white-space:nowrap;}
-  .cf-scope .heatmap-table th.year-col{text-align:left;padding-left:14px;}
-  .cf-scope .heatmap-table td{text-align:center;padding:10px 6px;font-family:'IBM Plex Mono',monospace;font-size:12px;border-bottom:1px solid var(--cf-gray-100);border-right:1px solid var(--cf-gray-100);white-space:nowrap;}
-  .cf-scope .heatmap-table td.year-col{text-align:left;padding-left:14px;font-family:'Oswald',sans-serif;font-weight:600;color:var(--cf-navy);border-right:1px solid var(--cf-border);}
-  .cf-scope .heatmap-table td.total-col{font-weight:700;background:var(--cf-gray-50);border-left:1px solid var(--cf-border);color:var(--cf-navy);}
-  .cf-scope .heatmap-table tr:last-child td{border-bottom:none;}
-  .cf-scope .stat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:16px;}
-  @media(max-width:900px){.cf-scope .stat-strip{grid-template-columns:repeat(2,1fr);}}
-  .cf-scope .stat{background:var(--cf-white);border:1px solid var(--cf-border);border-radius:6px;padding:14px 16px;box-shadow:var(--cf-shadow);}
-  .cf-scope .stat .n{font-family:'Oswald',sans-serif;font-size:22px;font-weight:600;color:var(--cf-navy);}
-  .cf-scope .stat .l{font-size:10.5px;font-weight:600;text-transform:uppercase;color:var(--cf-muted);letter-spacing:.4px;margin-top:4px;}
-  .cf-scope .stat.warn .n{color:var(--cf-neg);}
-  .cf-scope .stat.good .n{color:var(--cf-pos);}
-  .cf-scope .cf-footnote{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--cf-muted);border-top:1px solid var(--cf-border);padding-top:14px;margin-top:6px;}
 </style>
 </head>
 <body>
@@ -380,8 +318,8 @@
   <div class="titleblock">
     <div>
       <div class="eyebrow">Construction &middot; Detailed Schedule</div>
-      <h1>Reno Store 123</h1>
-      <div class="sub">Rebased from the McCoys Canyon Lake schedule — 118 activities across Design and Permitting, Procurement, Site, Sales Floor Building, Drive Thru, Inspections/CO, and Store Planning - Merchandising. Design and Permitting starts 8/17/2026, Order PEMB (90-day lead) drives Erect PEMB, Mobilize starts 2/1/2027. Store Set Up runs 6 weeks to absorb the Thanksgiving slowdown. Edit progress and dates below as the job proceeds.</div>
+      <h1>McCoys Canyon Lake</h1>
+      <div class="sub">Rebased from the New Caney Store 121 schedule — 104 activities across Procurement, Site, Sales Floor Building, Drive Thru, and Inspections/CO. Mobilize starts 7/20/2026. Edit progress and dates below as the job proceeds.</div>
     </div>
     <div class="stat">
       <div class="num" id="overallPct">0%</div>
@@ -393,13 +331,6 @@
       <div class="lbl">Today</div>
     </div>
   </div>
-
-  <div class="main-tab-nav">
-    <button class="main-tab-btn active" id="maintabbtn-schedule" onclick="showMainTab('schedule')">Schedule</button>
-    <button class="main-tab-btn" id="maintabbtn-cashflow" onclick="showMainTab('cashflow')">Cash Flow Timeline</button>
-  </div>
-
-  <div class="main-tab-panel active" id="maintab-schedule">
 
   <div class="toolbar">
     <div class="grp">
@@ -464,86 +395,9 @@
   </div>
 
   <div class="footer-note">
-    <span>Reno Store 123 &middot; Detailed Construction Schedule</span>
+    <span>McCoys Canyon Lake &middot; Detailed Construction Schedule</span>
     <span id="lastSaved">Not yet saved this session</span>
   </div>
-
-  </div><!-- /maintab-schedule -->
-
-  <div class="main-tab-panel" id="maintab-cashflow">
-  <div class="cf-scope">
-
-    <div class="section-header"><h2>Combined Cash Flow Timeline</h2><div class="section-line"></div><div class="section-badge">Reno Store 123 vs. Canyon Lake</div></div>
-    <p class="lede">Both stores are modeled from their real construction schedules rather than synthetic curves. Reno Store 123 uses its 105 budgeted tasks (design, PEMB, GC, and McCoy's self-contracted scope, each spread across its actual task dates from the Schedule tab; Store Planning - Merchandising is excluded since it isn't part of the construction budget). Canyon Lake uses its own 99-task as-built schedule the same way. Shift either start date to see how the combined monthly outflow lines up between the two projects.</p>
-
-    <div class="panel">
-      <div class="panel-header">Model Controls</div>
-      <div class="panel-body">
-        <div class="controls">
-          <div class="ctrl">
-            <label>Reno Store 123 schedule start (shifts all 105 budgeted tasks)</label>
-            <input type="month" id="cfAzleStart" value="2026-08">
-          </div>
-          <div class="ctrl">
-            <label>Canyon Lake schedule start (shifts all 99 tasks)</label>
-            <input type="month" id="cfCanyonStart" value="2026-07">
-          </div>
-          <div class="ctrl toggle-row">
-            <input type="checkbox" id="cfShowCanyon" checked>
-            <label style="margin:0;">Show Canyon Lake overlay</label>
-          </div>
-          <div class="ctrl toggle-row">
-            <input type="checkbox" id="cfShowCombined" checked>
-            <label style="margin:0;">Show combined total line</label>
-          </div>
-          <div class="ctrl toggle-row">
-            <input type="checkbox" id="cfSplitDesign" checked>
-            <label style="margin:0;">Break out design vs. construction</label>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="panel">
-      <div class="panel-header">Projected Monthly Cash Outflow</div>
-      <div class="panel-body">
-        <div class="chart-wrap"><canvas id="cfCashflowChart" height="95"></canvas></div>
-      </div>
-    </div>
-
-    <div class="panel">
-      <div class="panel-header">Monthly Spend Heatmap</div>
-      <div class="panel-body" style="padding:0;overflow-x:auto;">
-        <div id="cfHeatmapWrap"></div>
-      </div>
-    </div>
-
-    <div class="stat-strip">
-      <div class="stat">
-        <div class="n" id="cfStatOverlap">–</div>
-        <div class="l">Months of overlap</div>
-      </div>
-      <div class="stat warn">
-        <div class="n" id="cfStatPeak">–</div>
-        <div class="l">Peak combined monthly burn</div>
-      </div>
-      <div class="stat">
-        <div class="n" id="cfStatAzlePeak">–</div>
-        <div class="l">Reno Store 123 peak monthly burn (standalone)</div>
-      </div>
-      <div class="stat good">
-        <div class="n" id="cfStatFinish">–</div>
-        <div class="l">Reno Store 123 projected completion</div>
-      </div>
-    </div>
-
-    <div class="cf-footnote">
-      Methodology: monthly spend curves derived from paid-invoice history on Lockhart, Abilene, Lubbock, and New Caney (Design vs. Construction categorized per Work Order Category). Curves are normalized to percent-of-duration and blended equally across the four stores, then applied to Canyon Lake's budget. Reno Store 123 instead uses its real task-level schedule and per-bucket budgets. This is a planning model, not a contractual schedule — actual draws will vary with contract terms and change orders.
-    </div>
-
-  </div>
-  </div><!-- /maintab-cashflow -->
-
 </div>
 
 <input type="file" id="importFile" accept="application/json" style="display:none">
@@ -553,140 +407,125 @@
   "use strict";
 
   /* ============ Detailed schedule data ============
-     Rebased from the McCoys Canyon Lake schedule (same activities and durations),
-     every date shifted +196 days so Mobilize lands on 2/1/2027 (was 7/20/2026),
-     giving Store Planning enough lead time to clear both Thanksgiving and Christmas
-     and merchandise the store for a 2027 opening. */
+     Rebased from the New Caney Store 121 schedule (julianchetlange-svg.github.io/Canyon-Lake-Schedule),
+     design/permitting phase removed, duplicate "west" Drive-Thru tasks removed,
+     then every date shifted +19 days so Mobilize lands on 7/20/2026 (was 7/1/2026). */
   const DEFAULT_DATA = [
-    {id:1, parent:null, name:'Reno Store 123', phase:'project', isParent:true, milestone:false, progress:0, start:null, end:null, resource:''},
-    {id:2, parent:1, name:'Design and Permitting', phase:'Design and Permitting', isParent:true, milestone:false, progress:0, start:null, end:null, resource:''},
-    {id:3, parent:2, name:'Civil Design', phase:'Design and Permitting', isParent:false, milestone:false, progress:0, start:'2026-08-17', end:'2026-09-20', resource:'Eckermann Engineering'},
-    {id:4, parent:2, name:'Architectural and MEP Design', phase:'Design and Permitting', isParent:false, milestone:false, progress:0, start:'2026-08-17', end:'2026-09-27', resource:'Studio 8'},
-    {id:5, parent:2, name:'Fire Design', phase:'Design and Permitting', isParent:false, milestone:false, progress:0, start:'2026-08-31', end:'2026-09-20', resource:'1st Fire Protection'},
-    {id:6, parent:2, name:'Structural & PEMB Design', phase:'Design and Permitting', isParent:false, milestone:false, progress:0, start:'2026-10-05', end:'2026-11-29', resource:'Structural Engineer / CT Darnel'},
-    {id:7, parent:2, name:'Permitting', phase:'Design and Permitting', isParent:false, milestone:false, progress:0, start:'2026-10-05', end:'2026-11-29', resource:'Architect / AHJ'},
-    {id:8, parent:2, name:'Teinert Bid Review and Contract', phase:'Design and Permitting', isParent:false, milestone:false, progress:0, start:'2026-11-30', end:'2026-12-27', resource:'Teinert Construction'},
-    {id:9, parent:1, name:'Procurement', phase:'Procurement', isParent:true, milestone:false, progress:0, start:null, end:null, resource:''},
-    {id:10, parent:9, name:'Order PEMB', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-01-18', end:'2027-04-17', resource:'CT Darnel'},
-    {id:11, parent:9, name:'Secure Testing & Inspecting Svcs', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-02-01', end:'2027-02-05', resource:'McCoy\'s Const. Team'},
-    {id:12, parent:9, name:'Project Sign', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-02-01', end:'2027-02-05', resource:'McCoy\'s Const. Team'},
-    {id:13, parent:9, name:'True Look Camera', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-02-19', end:'2027-03-04', resource:'McCoy\'s Const. Team'},
-    {id:14, parent:9, name:'Loose Yard Racking', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-05-15', end:'2027-08-05', resource:'McCoy\'s Const. Team'},
-    {id:15, parent:9, name:'Fleet Equipment', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-05-25', end:'2027-11-07', resource:'McCoy\'s Const. Team'},
-    {id:16, parent:9, name:'Furnishings', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-06-06', end:'2027-06-17', resource:'McCoy\'s Const. Team'},
-    {id:17, parent:9, name:'HVAC Equipment', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-06-20', end:'2027-09-09', resource:'Teinert Construction'},
-    {id:18, parent:9, name:'Automatic Entrances - Sliding Doors', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-07-08', end:'2027-09-28', resource:'CT Darnel'},
-    {id:19, parent:9, name:'Catwalk', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-07-15', end:'2027-08-11', resource:'CT Darnel'},
-    {id:20, parent:9, name:'LED Lights', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-07-18', end:'2027-08-27', resource:'Teinert Construction'},
-    {id:21, parent:9, name:'Roof Jack', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-08-08', end:'2027-08-19', resource:'CT Darnel'},
-    {id:22, parent:9, name:'Dynaco Door', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-08-11', end:'2027-10-11', resource:'CT Darnel'},
-    {id:23, parent:9, name:'Signage', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-08-29', end:'2027-10-29', resource:'McCoy\'s Const. Team'},
-    {id:24, parent:9, name:'Energy Management System', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-08-29', end:'2027-10-07', resource:'Teinert Construction / McCoy\'s'},
-    {id:25, parent:9, name:'Data Rack & Patch Panels', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-08-29', end:'2027-10-07', resource:'Teinert Construction'},
-    {id:26, parent:9, name:'Amplifiers & Speakers', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-08-29', end:'2027-10-07', resource:'Teinert Construction'},
-    {id:27, parent:9, name:'AP Devices', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-08-29', end:'2027-10-07', resource:'McCoy\'s Const. Team'},
-    {id:28, parent:9, name:'Rubber Parking Bumpers', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-08-29', end:'2027-09-16', resource:'Teinert Construction'},
-    {id:29, parent:9, name:'Roof Ladder', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-08-29', end:'2027-10-07', resource:'CT Darnel'},
-    {id:30, parent:9, name:'Plastic Doors - WH', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-08-29', end:'2027-09-09', resource:'CT Darnel'},
-    {id:31, parent:9, name:'Chop Saw', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-08-29', end:'2027-09-09', resource:'Teinert Construction'},
-    {id:32, parent:9, name:'Generator', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-08-29', end:'2027-09-09', resource:'McCoy\'s Const. Team'},
-    {id:33, parent:9, name:'Dumpster', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-08-29', end:'2027-09-09', resource:'McCoy\'s Const. Team'},
-    {id:34, parent:9, name:'Baby Changing Stations', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-09-12', end:'2027-09-23', resource:'Teinert Construction'},
-    {id:35, parent:9, name:'Air Compressor', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-09-30', end:'2027-10-13', resource:'Teinert Construction'},
-    {id:36, parent:9, name:'Yard Bell', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-09-30', end:'2027-10-13', resource:'Teinert Construction'},
-    {id:37, parent:9, name:'Janitorial - Paper Products', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-09-30', end:'2027-10-13', resource:'McCoy\'s Const. Team'},
-    {id:38, parent:9, name:'Knox Box', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-10-07', end:'2027-10-13', resource:'1st Fire'},
-    {id:39, parent:9, name:'Bolt Down Safe', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-10-07', end:'2027-10-13', resource:'Teinert Construction'},
-    {id:40, parent:1, name:'Site', phase:'Site', isParent:true, milestone:false, progress:0, start:null, end:null, resource:''},
-    {id:41, parent:40, name:'Mobilize', phase:'Site', isParent:false, milestone:false, progress:0, start:'2027-02-01', end:'2027-02-03', resource:'Teinert Construction'},
-    {id:42, parent:40, name:'Temp Fence & Erosion Controls', phase:'Site', isParent:false, milestone:false, progress:0, start:'2027-02-03', end:'2027-02-09', resource:'Teinert Construction'},
-    {id:43, parent:40, name:'Clear and Grub Site', phase:'Site', isParent:false, milestone:false, progress:0, start:'2027-02-08', end:'2027-02-19', resource:'Teinert Construction'},
-    {id:44, parent:40, name:'Site Grading/Base', phase:'Site', isParent:false, milestone:false, progress:0, start:'2027-02-22', end:'2027-05-28', resource:'Teinert Construction'},
-    {id:45, parent:40, name:'Site Utilities', phase:'Site', isParent:false, milestone:false, progress:0, start:'2027-04-27', end:'2027-06-07', resource:'Teinert Construction'},
-    {id:46, parent:40, name:'Site Concrete Phase 1', phase:'Site', isParent:false, milestone:false, progress:0, start:'2027-06-07', end:'2027-06-18', resource:'Teinert Construction'},
-    {id:47, parent:40, name:'Site Concrete Phase 2', phase:'Site', isParent:false, milestone:false, progress:0, start:'2027-06-19', end:'2027-07-01', resource:'Teinert Construction'},
-    {id:48, parent:40, name:'Site Concrete Phase 3', phase:'Site', isParent:false, milestone:false, progress:0, start:'2027-07-02', end:'2027-07-15', resource:'Teinert Construction'},
-    {id:49, parent:40, name:'Site Concrete Phase 4', phase:'Site', isParent:false, milestone:false, progress:0, start:'2027-07-16', end:'2027-08-02', resource:'Teinert Construction'},
-    {id:50, parent:40, name:'Site Concrete Phase 5', phase:'Site', isParent:false, milestone:false, progress:0, start:'2027-08-04', end:'2027-08-17', resource:'Teinert Construction'},
-    {id:51, parent:40, name:'Site Concrete Phase 6', phase:'Site', isParent:false, milestone:false, progress:0, start:'2027-08-18', end:'2027-09-02', resource:'Teinert Construction'},
-    {id:52, parent:40, name:'Fencing', phase:'Site', isParent:false, milestone:false, progress:0, start:'2027-09-03', end:'2027-10-13', resource:'Teinert Construction'},
-    {id:53, parent:40, name:'Striping & Accessories', phase:'Site', isParent:false, milestone:false, progress:0, start:'2027-10-02', end:'2027-10-13', resource:'Teinert Construction'},
-    {id:54, parent:40, name:'Landscape & Irrigation', phase:'Site', isParent:false, milestone:false, progress:0, start:'2027-10-09', end:'2027-10-26', resource:'Teinert Construction'},
-    {id:55, parent:1, name:'Sales Floor Building', phase:'Sales Floor Building', isParent:true, milestone:false, progress:0, start:null, end:null, resource:''},
-    {id:56, parent:55, name:'Building Pad', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-03-08', end:'2027-03-18', resource:'Teinert Construction'},
-    {id:57, parent:55, name:'Concrete Footers', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-03-19', end:'2027-04-01', resource:'Teinert Construction'},
-    {id:58, parent:55, name:'Underground Plumbing & Elec.', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-04-02', end:'2027-04-10', resource:'Teinert Construction'},
-    {id:59, parent:55, name:'Concrete Slab', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-04-11', end:'2027-04-18', resource:'Teinert Construction'},
-    {id:60, parent:55, name:'Erect PEMB', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-04-26', end:'2027-06-06', resource:'CT Darnel'},
-    {id:61, parent:55, name:'Interior Structure Framing', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-05-24', end:'2027-06-07', resource:'McCoy\'s Const. Team'},
-    {id:62, parent:55, name:'OH & Wall MEP Rough In', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-06-07', end:'2027-07-11', resource:'Teinert Construction'},
-    {id:63, parent:55, name:'Fire Suppression Rough In', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-06-07', end:'2027-06-27', resource:'1st Fire Protection'},
-    {id:64, parent:55, name:'Store Planning Construction Items', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-06-08', end:'2027-07-01', resource:'McCoy\'s Const. Team'},
-    {id:65, parent:55, name:'Interior Liner Panels', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-07-11', end:'2027-07-25', resource:'CT Darnel'},
-    {id:66, parent:55, name:'Plywood & Paneling', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-07-15', end:'2027-07-26', resource:'McCoy\'s Const. Team'},
-    {id:67, parent:55, name:'Install RTUs', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-07-19', end:'2027-07-25', resource:'Teinert Construction'},
-    {id:68, parent:55, name:'Install Split & AHU', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-07-26', end:'2027-08-01', resource:'Teinert Construction'},
-    {id:69, parent:55, name:'Pull Electrical Wiring', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-07-29', end:'2027-08-16', resource:'Teinert Construction'},
-    {id:70, parent:55, name:'Data Cabling', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-08-01', end:'2027-08-21', resource:'Teinert Construction'},
-    {id:71, parent:55, name:'Façade Stucco & Stone', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-08-04', end:'2027-08-22', resource:'CT Darnel'},
-    {id:72, parent:55, name:'Wire Fire/Burg Alarm', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-08-09', end:'2027-08-22', resource:'1st Fire / Teinert Construction'},
-    {id:73, parent:55, name:'Set Light Fixtures', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-08-19', end:'2027-08-30', resource:'Teinert Construction'},
-    {id:74, parent:55, name:'MEP Trim Out', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-08-19', end:'2027-09-04', resource:'Teinert Construction'},
-    {id:75, parent:55, name:'Install Mez Rack', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-08-20', end:'2027-08-30', resource:'CT Darnel'},
-    {id:76, parent:55, name:'Install Pallet Racking', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-08-20', end:'2027-08-30', resource:'CT Darnel'},
-    {id:77, parent:55, name:'Painting', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-08-31', end:'2027-09-18', resource:'Teinert Construction'},
-    {id:78, parent:55, name:'Set Millwork', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-09-01', end:'2027-09-06', resource:'Teinert Construction'},
-    {id:79, parent:55, name:'Install Pallet Rack Plank', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-09-02', end:'2027-09-07', resource:'McCoy\'s Const. Team'},
-    {id:80, parent:55, name:'Restroom Tile', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-09-19', end:'2027-09-30', resource:'Teinert Construction'},
-    {id:81, parent:55, name:'Prep/Seal/Polish Concrete', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-09-22', end:'2027-09-29', resource:'Teinert Construction'},
-    {id:82, parent:55, name:'Install Doors & Hardware', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-09-22', end:'2027-09-28', resource:'Teinert Construction'},
-    {id:83, parent:55, name:'Set Restroom Fixtures', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-10-03', end:'2027-10-05', resource:'Teinert Construction'},
-    {id:84, parent:55, name:'Set Restroom Partitions', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-10-03', end:'2027-10-08', resource:'Teinert Construction'},
-    {id:85, parent:55, name:'Final Clean', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-10-03', end:'2027-10-08', resource:'Teinert Construction'},
-    {id:86, parent:1, name:'Drive Thru', phase:'Drive Thru', isParent:true, milestone:false, progress:0, start:null, end:null, resource:''},
-    {id:87, parent:86, name:'Building Pad', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-05-20', end:'2027-05-24', resource:'Teinert Construction'},
-    {id:88, parent:86, name:'Concrete Footers', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-05-25', end:'2027-05-30', resource:'Teinert Construction'},
-    {id:89, parent:86, name:'Underground Fire & Elec. Rough In', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-05-25', end:'2027-05-29', resource:'1st Fire / Teinert Construction'},
-    {id:90, parent:86, name:'Concrete Slab', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-05-31', end:'2027-06-06', resource:'Teinert Construction'},
-    {id:91, parent:86, name:'Erect Canopy', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-06-07', end:'2027-06-27', resource:'CT Darnel'},
-    {id:92, parent:86, name:'Frame Fire Riser Room', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-07-02', end:'2027-07-06', resource:'McCoy\'s Const. Team'},
-    {id:93, parent:86, name:'Electrical Rough In', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-07-07', end:'2027-07-25', resource:'Teinert Construction'},
-    {id:94, parent:86, name:'Plywood & Paneling', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-07-26', end:'2027-07-27', resource:'McCoy\'s Const. Team'},
-    {id:95, parent:86, name:'Electrical Trim Out', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-07-30', end:'2027-08-01', resource:'Teinert Construction'},
-    {id:96, parent:86, name:'Set Light Fixtures', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-08-06', end:'2027-08-10', resource:'Teinert Construction'},
-    {id:97, parent:86, name:'Fire Suppression Rough In', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-09-03', end:'2027-09-14', resource:'1st Fire Protection'},
-    {id:98, parent:86, name:'Fire Suppression Trim Out', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-09-17', end:'2027-09-19', resource:'1st Fire Protection'},
-    {id:99, parent:86, name:'Final Coat of Paint', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-09-20', end:'2027-09-24', resource:'Teinert Construction'},
-    {id:100, parent:86, name:'Install Pigeon Hole Rack', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-09-27', end:'2027-10-07', resource:'CT Darnel'},
-    {id:101, parent:86, name:'Install Pallet Rack', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-09-27', end:'2027-10-07', resource:'CT Darnel'},
-    {id:102, parent:86, name:'Cut Shed Bench', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-10-08', end:'2027-10-12', resource:'McCoy\'s Const. Team'},
-    {id:103, parent:86, name:'MDO Board Pigeon Hole', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-10-08', end:'2027-10-12', resource:'McCoy\'s Const. Team'},
-    {id:104, parent:86, name:'Chocks Pallet Rack', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-10-08', end:'2027-10-12', resource:'McCoy\'s Const. Team'},
-    {id:105, parent:1, name:'Inspections, CO, Final Punch', phase:'Inspections & CO', isParent:true, milestone:false, progress:0, start:null, end:null, resource:''},
-    {id:106, parent:105, name:'Electrical Final', phase:'Inspections & CO', isParent:false, milestone:false, progress:0, start:'2027-10-18', end:'2027-10-18', resource:'Teinert Construction'},
-    {id:107, parent:105, name:'Fire Suppression Inspection', phase:'Inspections & CO', isParent:false, milestone:false, progress:0, start:'2027-10-18', end:'2027-10-18', resource:'1st Fire Protection'},
-    {id:108, parent:105, name:'Fire Alarm Inspection', phase:'Inspections & CO', isParent:false, milestone:false, progress:0, start:'2027-10-19', end:'2027-10-19', resource:'1st Fire Protection'},
-    {id:109, parent:105, name:'Building Official Final', phase:'Inspections & CO', isParent:false, milestone:false, progress:0, start:'2027-10-20', end:'2027-10-20', resource:'Teinert Construction/1st Fire'},
-    {id:110, parent:105, name:'Final CO', phase:'Inspections & CO', isParent:false, milestone:false, progress:0, start:'2027-10-23', end:'2027-10-23', resource:'Teinert Construction'},
-    {id:111, parent:105, name:'Punch List', phase:'Inspections & CO', isParent:false, milestone:false, progress:0, start:'2027-10-25', end:'2027-11-06', resource:'Eckermann / Studio 8 / McCoy\'s'},
-    {id:112, parent:105, name:'Turnover Store Planning', phase:'Inspections & CO', isParent:false, milestone:false, progress:0, start:'2027-11-08', end:'2027-11-08', resource:'McCoy\'s Const. Team'},
-    {id:113, parent:1, name:'Store Planning - Merchandising', phase:'Store Planning - Merchandising', isParent:true, milestone:false, progress:0, start:null, end:null, resource:''},
-    {id:114, parent:113, name:'Store Set Up - Week 1', phase:'Store Planning - Merchandising', isParent:false, milestone:false, progress:0, start:'2027-11-08', end:'2027-11-12', resource:'McCoy\'s Store Planning Team'},
-    {id:115, parent:113, name:'Store Set Up - Week 2', phase:'Store Planning - Merchandising', isParent:false, milestone:false, progress:0, start:'2027-11-15', end:'2027-11-19', resource:'McCoy\'s Store Planning Team'},
-    {id:116, parent:113, name:'Store Set Up - Week 3 (Thanksgiving - Reduced Crew)', phase:'Store Planning - Merchandising', isParent:false, milestone:false, progress:0, start:'2027-11-22', end:'2027-11-26', resource:'McCoy\'s Store Planning Team'},
-    {id:117, parent:113, name:'Store Set Up - Week 4', phase:'Store Planning - Merchandising', isParent:false, milestone:false, progress:0, start:'2027-11-29', end:'2027-12-03', resource:'McCoy\'s Store Planning Team'},
-    {id:118, parent:113, name:'Store Set Up - Week 5', phase:'Store Planning - Merchandising', isParent:false, milestone:false, progress:0, start:'2027-12-06', end:'2027-12-10', resource:'McCoy\'s Store Planning Team'},
-    {id:119, parent:113, name:'Store Set Up - Week 6', phase:'Store Planning - Merchandising', isParent:false, milestone:false, progress:0, start:'2027-12-13', end:'2027-12-17', resource:'McCoy\'s Store Planning Team'}
+    {id:1, parent:null, name:'McCoys Canyon Lake', phase:'project', isParent:true, milestone:false, progress:0, start:null, end:null, resource:''},
+    {id:12, parent:1, name:'Procurement', phase:'Procurement', isParent:true, milestone:false, progress:0, start:null, end:null, resource:''},
+    {id:14, parent:12, name:'Secure Testing & Inspecting Svcs', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2026-07-20', end:'2026-07-24', resource:'McCoy\'s Const. Team'},
+    {id:15, parent:12, name:'Project Sign', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2026-07-20', end:'2026-07-24', resource:'McCoy\'s Const. Team'},
+    {id:13, parent:12, name:'True Look Camera', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2026-08-07', end:'2026-08-20', resource:'McCoy\'s Const. Team'},
+    {id:37, parent:12, name:'Loose Yard Racking', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2026-10-31', end:'2027-01-21', resource:'McCoy\'s Const. Team'},
+    {id:34, parent:12, name:'Fleet Equipment', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2026-11-10', end:'2027-04-25', resource:'McCoy\'s Const. Team'},
+    {id:41, parent:12, name:'Furnishings', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2026-11-22', end:'2026-12-03', resource:'McCoy\'s Const. Team'},
+    {id:25, parent:12, name:'HVAC Equipment', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2026-12-06', end:'2027-02-25', resource:'Teinert Construction'},
+    {id:19, parent:12, name:'Automatic Entrances - Sliding Doors', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2026-12-24', end:'2027-03-16', resource:'CT Darnel'},
+    {id:16, parent:12, name:'Catwalk', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2026-12-31', end:'2027-01-27', resource:'CT Darnel'},
+    {id:26, parent:12, name:'LED Lights', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-01-03', end:'2027-02-12', resource:'Teinert Construction'},
+    {id:17, parent:12, name:'Roof Jack', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-01-24', end:'2027-02-04', resource:'CT Darnel'},
+    {id:18, parent:12, name:'Dynaco Door', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-01-27', end:'2027-03-29', resource:'CT Darnel'},
+    {id:20, parent:12, name:'Signage', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-02-14', end:'2027-04-16', resource:'McCoy\'s Const. Team'},
+    {id:27, parent:12, name:'Energy Management System', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-02-14', end:'2027-03-25', resource:'Teinert Construction / McCoy\'s'},
+    {id:28, parent:12, name:'Data Rack & Patch Panels', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-02-14', end:'2027-03-25', resource:'Teinert Construction'},
+    {id:29, parent:12, name:'Amplifiers & Speakers', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-02-14', end:'2027-03-25', resource:'Teinert Construction'},
+    {id:30, parent:12, name:'AP Devices', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-02-14', end:'2027-03-25', resource:'McCoy\'s Const. Team'},
+    {id:31, parent:12, name:'Rubber Parking Bumpers', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-02-14', end:'2027-03-04', resource:'Teinert Construction'},
+    {id:32, parent:12, name:'Roof Ladder', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-02-14', end:'2027-03-25', resource:'CT Darnel'},
+    {id:33, parent:12, name:'Plastic Doors - WH', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-02-14', end:'2027-02-25', resource:'CT Darnel'},
+    {id:35, parent:12, name:'Chop Saw', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-02-14', end:'2027-02-25', resource:'Teinert Construction'},
+    {id:36, parent:12, name:'Generator', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-02-14', end:'2027-02-25', resource:'McCoy\'s Const. Team'},
+    {id:38, parent:12, name:'Dumpster', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-02-14', end:'2027-02-25', resource:'McCoy\'s Const. Team'},
+    {id:40, parent:12, name:'Baby Changing Stations', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-02-28', end:'2027-03-11', resource:'Teinert Construction'},
+    {id:23, parent:12, name:'Air Compressor', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-03-18', end:'2027-03-31', resource:'Teinert Construction'},
+    {id:24, parent:12, name:'Yard Bell', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-03-18', end:'2027-03-31', resource:'Teinert Construction'},
+    {id:39, parent:12, name:'Janitorial - Paper Products', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-03-18', end:'2027-03-31', resource:'McCoy\'s Const. Team'},
+    {id:21, parent:12, name:'Knox Box', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-03-25', end:'2027-03-31', resource:'1st Fire'},
+    {id:22, parent:12, name:'Bolt Down Safe', phase:'Procurement', isParent:false, milestone:false, progress:0, start:'2027-03-25', end:'2027-03-31', resource:'Teinert Construction'},
+    {id:42, parent:1, name:'Site', phase:'Site', isParent:true, milestone:false, progress:0, start:null, end:null, resource:''},
+    {id:113, parent:42, name:'Notice to Proceed', phase:'Site', isParent:false, milestone:true, progress:0, start:'2026-07-20', end:'2026-07-20', resource:''},
+    {id:43, parent:42, name:'Mobilize', phase:'Site', isParent:false, milestone:false, progress:0, start:'2026-07-20', end:'2026-07-22', resource:'Teinert Construction'},
+    {id:44, parent:42, name:'Temp Fence & Erosion Controls', phase:'Site', isParent:false, milestone:false, progress:0, start:'2026-07-22', end:'2026-07-28', resource:'Teinert Construction'},
+    {id:45, parent:42, name:'Clear and Grub Site', phase:'Site', isParent:false, milestone:false, progress:0, start:'2026-07-27', end:'2026-08-07', resource:'Teinert Construction'},
+    {id:46, parent:42, name:'Site Grading/Base', phase:'Site', isParent:false, milestone:false, progress:0, start:'2026-08-10', end:'2026-11-13', resource:'Teinert Construction'},
+    {id:47, parent:42, name:'Site Utilities', phase:'Site', isParent:false, milestone:false, progress:0, start:'2026-10-13', end:'2026-11-23', resource:'Teinert Construction'},
+    {id:112, parent:42, name:'Retaining Walls', phase:'Site', isParent:false, milestone:false, progress:0, start:'2026-11-19', end:'2026-12-30', resource:'Teinert Construction'},
+    {id:48, parent:42, name:'Site Concrete Phase 1', phase:'Site', isParent:false, milestone:false, progress:0, start:'2026-11-23', end:'2026-12-04', resource:'Teinert Construction'},
+    {id:49, parent:42, name:'Site Concrete Phase 2', phase:'Site', isParent:false, milestone:false, progress:0, start:'2026-12-05', end:'2026-12-17', resource:'Teinert Construction'},
+    {id:50, parent:42, name:'Site Concrete Phase 3', phase:'Site', isParent:false, milestone:false, progress:0, start:'2026-12-18', end:'2026-12-31', resource:'Teinert Construction'},
+    {id:51, parent:42, name:'Site Concrete Phase 4', phase:'Site', isParent:false, milestone:false, progress:0, start:'2027-01-01', end:'2027-01-18', resource:'Teinert Construction'},
+    {id:52, parent:42, name:'Site Concrete Phase 5', phase:'Site', isParent:false, milestone:false, progress:0, start:'2027-01-20', end:'2027-02-02', resource:'Teinert Construction'},
+    {id:53, parent:42, name:'Site Concrete Phase 6', phase:'Site', isParent:false, milestone:false, progress:0, start:'2027-02-03', end:'2027-02-18', resource:'Teinert Construction'},
+    {id:54, parent:42, name:'Fencing', phase:'Site', isParent:false, milestone:false, progress:0, start:'2027-02-19', end:'2027-03-31', resource:'Teinert Construction'},
+    {id:55, parent:42, name:'Striping & Accessories', phase:'Site', isParent:false, milestone:false, progress:0, start:'2027-03-20', end:'2027-03-31', resource:'Teinert Construction'},
+    {id:56, parent:42, name:'Landscape & Irrigation', phase:'Site', isParent:false, milestone:false, progress:0, start:'2027-03-27', end:'2027-04-13', resource:'Teinert Construction'},
+    {id:57, parent:1, name:'Sales Floor Building', phase:'Sales Floor Building', isParent:true, milestone:false, progress:0, start:null, end:null, resource:''},
+    {id:58, parent:57, name:'Building Pad', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2026-08-24', end:'2026-09-03', resource:'Teinert Construction'},
+    {id:60, parent:57, name:'Concrete Footers', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2026-09-04', end:'2026-09-17', resource:'Teinert Construction'},
+    {id:59, parent:57, name:'Underground Plumbing & Elec.', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2026-09-18', end:'2026-09-26', resource:'Teinert Construction'},
+    {id:61, parent:57, name:'Concrete Slab', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2026-09-27', end:'2026-10-04', resource:'Teinert Construction'},
+    {id:62, parent:57, name:'Erect PEMB', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2026-10-12', end:'2026-11-22', resource:'CT Darnel'},
+    {id:63, parent:57, name:'Interior Structure Framing', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2026-11-09', end:'2026-11-23', resource:'McCoy\'s Const. Team'},
+    {id:65, parent:57, name:'OH & Wall MEP Rough In', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2026-11-23', end:'2026-12-27', resource:'Teinert Construction'},
+    {id:66, parent:57, name:'Fire Suppression Rough In', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2026-11-23', end:'2026-12-13', resource:'1st Fire Protection'},
+    {id:111, parent:57, name:'Store Planning Construction Items', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2026-11-24', end:'2026-12-17', resource:'McCoy\'s Const. Team'},
+    {id:68, parent:57, name:'Façade Structural Steel', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2026-12-24', end:'2027-01-18', resource:'CT Darnel'},
+    {id:67, parent:57, name:'Interior Liner Panels', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2026-12-27', end:'2027-01-10', resource:'CT Darnel'},
+    {id:70, parent:57, name:'Plywood & Paneling', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2026-12-31', end:'2027-01-11', resource:'McCoy\'s Const. Team'},
+    {id:73, parent:57, name:'Install RTUs', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-01-04', end:'2027-01-10', resource:'Teinert Construction'},
+    {id:74, parent:57, name:'Install Split & AHU', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-01-11', end:'2027-01-17', resource:'Teinert Construction'},
+    {id:76, parent:57, name:'Pull Electrical Wiring', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-01-14', end:'2027-02-01', resource:'Teinert Construction'},
+    {id:77, parent:57, name:'Data Cabling', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-01-17', end:'2027-02-06', resource:'Teinert Construction'},
+    {id:69, parent:57, name:'Façade Stucco & Stone', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-01-20', end:'2027-02-07', resource:'CT Darnel'},
+    {id:78, parent:57, name:'Wire Fire/Burg Alarm', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-01-25', end:'2027-02-07', resource:'1st Fire / Teinert Construction'},
+    {id:79, parent:57, name:'Set Light Fixtures', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-02-04', end:'2027-02-15', resource:'Teinert Construction'},
+    {id:87, parent:57, name:'MEP Trim Out', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-02-04', end:'2027-02-20', resource:'Teinert Construction'},
+    {id:84, parent:57, name:'Install Mez Rack', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-02-05', end:'2027-02-15', resource:'CT Darnel'},
+    {id:85, parent:57, name:'Install Pallet Racking', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-02-05', end:'2027-02-15', resource:'CT Darnel'},
+    {id:71, parent:57, name:'Painting', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-02-16', end:'2027-03-06', resource:'Teinert Construction'},
+    {id:83, parent:57, name:'Set Millwork', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-02-17', end:'2027-02-22', resource:'Teinert Construction'},
+    {id:86, parent:57, name:'Install Pallet Rack Plank', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-02-18', end:'2027-02-23', resource:'McCoy\'s Const. Team'},
+    {id:80, parent:57, name:'Restroom Tile', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-03-07', end:'2027-03-18', resource:'Teinert Construction'},
+    {id:72, parent:57, name:'Prep/Seal/Polish Concrete', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-03-10', end:'2027-03-17', resource:'Teinert Construction'},
+    {id:75, parent:57, name:'Install Doors & Hardware', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-03-10', end:'2027-03-16', resource:'Teinert Construction'},
+    {id:81, parent:57, name:'Set Restroom Fixtures', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-03-21', end:'2027-03-23', resource:'Teinert Construction'},
+    {id:82, parent:57, name:'Set Restroom Partitions', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-03-21', end:'2027-03-26', resource:'Teinert Construction'},
+    {id:88, parent:57, name:'Final Clean', phase:'Sales Floor Building', isParent:false, milestone:false, progress:0, start:'2027-03-21', end:'2027-03-26', resource:'Teinert Construction'},
+    {id:89, parent:1, name:'Drive Thru', phase:'Drive Thru', isParent:true, milestone:false, progress:0, start:null, end:null, resource:''},
+    {id:110, parent:89, name:'Building Pad', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2026-08-27', end:'2026-09-09', resource:'Teinert Construction'},
+    {id:91, parent:89, name:'Concrete Footers', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2026-09-14', end:'2026-10-02', resource:'Teinert Construction'},
+    {id:92, parent:89, name:'Underground Fire & Elec. Rough In', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2026-09-30', end:'2026-10-02', resource:'1st Fire / Teinert Construction'},
+    {id:93, parent:89, name:'Concrete Slab', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2026-10-05', end:'2026-10-16', resource:'Teinert Construction'},
+    {id:94, parent:89, name:'Erect Canopy', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2026-11-23', end:'2026-12-13', resource:'CT Darnel'},
+    {id:95, parent:89, name:'Frame Fire Riser Room', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2026-12-18', end:'2026-12-22', resource:'McCoy\'s Const. Team'},
+    {id:97, parent:89, name:'Electrical Rough In', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2026-12-23', end:'2027-01-10', resource:'Teinert Construction'},
+    {id:98, parent:89, name:'Plywood & Paneling', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-01-11', end:'2027-01-12', resource:'McCoy\'s Const. Team'},
+    {id:99, parent:89, name:'Electrical Trim Out', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-01-15', end:'2027-01-17', resource:'Teinert Construction'},
+    {id:101, parent:89, name:'Set Light Fixtures', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-01-22', end:'2027-01-26', resource:'Teinert Construction'},
+    {id:96, parent:89, name:'Fire Suppression Rough In', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-02-19', end:'2027-03-02', resource:'1st Fire Protection'},
+    {id:100, parent:89, name:'Fire Suppression Trim Out', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-03-05', end:'2027-03-07', resource:'1st Fire Protection'},
+    {id:102, parent:89, name:'Final Coat of Paint', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-03-08', end:'2027-03-12', resource:'Teinert Construction'},
+    {id:106, parent:89, name:'Install Pigeon Hole Rack', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-03-15', end:'2027-03-25', resource:'CT Darnel'},
+    {id:107, parent:89, name:'Install Pallet Rack', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-03-15', end:'2027-03-25', resource:'CT Darnel'},
+    {id:103, parent:89, name:'Cut Shed Bench', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-03-26', end:'2027-03-30', resource:'McCoy\'s Const. Team'},
+    {id:104, parent:89, name:'MDO Board Pigeon Hole', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-03-26', end:'2027-03-30', resource:'McCoy\'s Const. Team'},
+    {id:105, parent:89, name:'Chocks Pallet Rack', phase:'Drive Thru', isParent:false, milestone:false, progress:0, start:'2027-03-26', end:'2027-03-30', resource:'McCoy\'s Const. Team'},
+    {id:122, parent:1, name:'Inspections, CO, Final Punch', phase:'Inspections & CO', isParent:true, milestone:false, progress:0, start:null, end:null, resource:''},
+    {id:123, parent:122, name:'Electrical Final', phase:'Inspections & CO', isParent:false, milestone:false, progress:0, start:'2027-04-05', end:'2027-04-05', resource:'Teinert Construction'},
+    {id:124, parent:122, name:'Fire Suppression Inspection', phase:'Inspections & CO', isParent:false, milestone:false, progress:0, start:'2027-04-05', end:'2027-04-05', resource:'1st Fire Protection'},
+    {id:125, parent:122, name:'Fire Alarm Inspection', phase:'Inspections & CO', isParent:false, milestone:false, progress:0, start:'2027-04-06', end:'2027-04-06', resource:'1st Fire Protection'},
+    {id:126, parent:122, name:'Building Official Final', phase:'Inspections & CO', isParent:false, milestone:false, progress:0, start:'2027-04-07', end:'2027-04-07', resource:'Teinert Construction/1st Fire'},
+    {id:127, parent:122, name:'Final CO', phase:'Inspections & CO', isParent:false, milestone:false, progress:0, start:'2027-04-10', end:'2027-04-10', resource:'Teinert Construction'},
+    {id:128, parent:122, name:'Punch List', phase:'Inspections & CO', isParent:false, milestone:false, progress:0, start:'2027-04-12', end:'2027-04-24', resource:'Eckermann / Studio 8 / McCoy\'s'},
+    {id:129, parent:122, name:'Turnover Store Planning', phase:'Inspections & CO', isParent:false, milestone:false, progress:0, start:'2027-04-26', end:'2027-04-26', resource:'McCoy\'s Const. Team'}
   ];
   const PHASE_COLORS = {
     "project":"#1F4E79",
-    "Design and Permitting":"#6B7280",
     "Procurement":"#1D9E75",
     "Site":"#BA7517",
     "Sales Floor Building":"#378ADD",
     "Drive Thru":"#D85A30",
-    "Inspections & CO":"#E24B4A",
-    "Store Planning - Merchandising":"#8E5BC0"
+    "Inspections & CO":"#E24B4A"
   };
   function phaseColor(phase){ return PHASE_COLORS[phase] || "#7A7A72"; }
   function tint(hex,alphaHex){ return hex+alphaHex; }
@@ -1129,7 +968,7 @@
   function buildExportPayload(){
     return {
       exportedAt: new Date().toISOString(),
-      project: "Reno Store 123 — Detailed Construction Schedule",
+      project: "McCoys Canyon Lake — Detailed Construction Schedule",
       rows: rows.map(r=>({id:r.id,parent:r.parent,name:r.name,phase:r.phase,isParent:r.isParent,progress:r.progress,start:r.start,end:r.end,resource:r.resource}))
     };
   }
@@ -1144,7 +983,7 @@
 
   document.getElementById("btnExport").addEventListener("click",()=>{
     const stamp = todayISO();
-    downloadJSON(buildExportPayload(), "reno-store-123-detailed-schedule-"+stamp+".json");
+    downloadJSON(buildExportPayload(), "mccoys-canyon-lake-detailed-schedule-"+stamp+".json");
     document.getElementById("lastSaved").textContent = "Saved just now ("+stamp+")";
   });
 
@@ -1205,468 +1044,6 @@
     .catch(()=>{
       document.getElementById("lastSaved").textContent = "Showing baseline schedule -- no schedule-progress.json found next to this file";
     });
-})();
-</script>
-
-<script>
-  /* ============ Main tab switcher (Schedule / Cash Flow Timeline) ============ */
-  function showMainTab(name){
-    document.querySelectorAll('.main-tab-panel').forEach(p=>p.classList.remove('active'));
-    document.querySelectorAll('.main-tab-btn').forEach(b=>b.classList.remove('active'));
-    document.getElementById('maintab-'+name).classList.add('active');
-    document.getElementById('maintabbtn-'+name).classList.add('active');
-    // Chart.js sizes to 0 while its canvas is hidden -- fix on first reveal.
-    if(name==='cashflow' && window.__cfResize) window.__cfResize();
-  }
-</script>
-
-<script>
-(function(){
-  "use strict";
-
-  /* ============ Cash Flow Timeline (ported from the capital-proposal doc, Section 04) ============ */
-
-  function monthLabel(baseYear, baseMonth0, offset){
-    const d = new Date(baseYear, baseMonth0+offset, 1);
-    return d.toLocaleDateString('en-US',{month:'short', year:'2-digit'});
-  }
-  function fmtK(n){ return '$'+Math.round(n/1000).toLocaleString()+'K'; }
-
-  // Real detailed schedule for Reno Store 123 (105 budgeted tasks; Store Planning - Merchandising
-  // excluded -- it isn't part of the construction budget). Dates match the Schedule tab as of the
-  // latest revision (Order PEMB 90-day lead, Erect PEMB 4/26/27 for slab cure, Façade Structural
-  // Steel removed).
-  const SCHEDULE_TASKS = [
-    {s:'2026-08-17',e:'2026-09-20',b:'design'},
-    {s:'2026-08-17',e:'2026-09-27',b:'design'},
-    {s:'2026-08-31',e:'2026-09-20',b:'mccoy'},
-    {s:'2026-10-05',e:'2026-11-29',b:'pemb'},
-    {s:'2026-10-05',e:'2026-11-29',b:'design'},
-    {s:'2026-11-30',e:'2026-12-27',b:'gc'},
-    {s:'2027-01-18',e:'2027-04-17',b:'pemb'},
-    {s:'2027-02-01',e:'2027-02-05',b:'mccoy'},
-    {s:'2027-02-01',e:'2027-02-05',b:'mccoy'},
-    {s:'2027-02-19',e:'2027-03-04',b:'mccoy'},
-    {s:'2027-05-15',e:'2027-08-05',b:'mccoy'},
-    {s:'2027-05-25',e:'2027-11-07',b:'mccoy'},
-    {s:'2027-06-06',e:'2027-06-17',b:'mccoy'},
-    {s:'2027-06-20',e:'2027-09-09',b:'gc'},
-    {s:'2027-07-08',e:'2027-09-28',b:'pemb'},
-    {s:'2027-07-15',e:'2027-08-11',b:'pemb'},
-    {s:'2027-07-18',e:'2027-08-27',b:'gc'},
-    {s:'2027-08-08',e:'2027-08-19',b:'pemb'},
-    {s:'2027-08-11',e:'2027-10-11',b:'pemb'},
-    {s:'2027-08-29',e:'2027-10-29',b:'mccoy'},
-    {s:'2027-08-29',e:'2027-10-07',b:'mccoy'},
-    {s:'2027-08-29',e:'2027-10-07',b:'gc'},
-    {s:'2027-08-29',e:'2027-10-07',b:'gc'},
-    {s:'2027-08-29',e:'2027-10-07',b:'mccoy'},
-    {s:'2027-08-29',e:'2027-09-16',b:'gc'},
-    {s:'2027-08-29',e:'2027-10-07',b:'pemb'},
-    {s:'2027-08-29',e:'2027-09-09',b:'pemb'},
-    {s:'2027-08-29',e:'2027-09-09',b:'gc'},
-    {s:'2027-08-29',e:'2027-09-09',b:'mccoy'},
-    {s:'2027-08-29',e:'2027-09-09',b:'mccoy'},
-    {s:'2027-09-12',e:'2027-09-23',b:'gc'},
-    {s:'2027-09-30',e:'2027-10-13',b:'gc'},
-    {s:'2027-09-30',e:'2027-10-13',b:'gc'},
-    {s:'2027-09-30',e:'2027-10-13',b:'mccoy'},
-    {s:'2027-10-07',e:'2027-10-13',b:'mccoy'},
-    {s:'2027-10-07',e:'2027-10-13',b:'gc'},
-    {s:'2027-02-01',e:'2027-02-03',b:'gc'},
-    {s:'2027-02-03',e:'2027-02-09',b:'gc'},
-    {s:'2027-02-08',e:'2027-02-19',b:'gc'},
-    {s:'2027-02-22',e:'2027-05-28',b:'gc'},
-    {s:'2027-04-27',e:'2027-06-07',b:'gc'},
-    {s:'2027-06-07',e:'2027-06-18',b:'gc'},
-    {s:'2027-06-19',e:'2027-07-01',b:'gc'},
-    {s:'2027-07-02',e:'2027-07-15',b:'gc'},
-    {s:'2027-07-16',e:'2027-08-02',b:'gc'},
-    {s:'2027-08-04',e:'2027-08-17',b:'gc'},
-    {s:'2027-08-18',e:'2027-09-02',b:'gc'},
-    {s:'2027-09-03',e:'2027-10-13',b:'gc'},
-    {s:'2027-10-02',e:'2027-10-13',b:'gc'},
-    {s:'2027-10-09',e:'2027-10-26',b:'gc'},
-    {s:'2027-03-08',e:'2027-03-18',b:'gc'},
-    {s:'2027-03-19',e:'2027-04-01',b:'gc'},
-    {s:'2027-04-02',e:'2027-04-10',b:'gc'},
-    {s:'2027-04-11',e:'2027-04-18',b:'gc'},
-    {s:'2027-04-26',e:'2027-06-06',b:'pemb'},
-    {s:'2027-05-24',e:'2027-06-07',b:'mccoy'},
-    {s:'2027-06-07',e:'2027-07-11',b:'gc'},
-    {s:'2027-06-07',e:'2027-06-27',b:'mccoy'},
-    {s:'2027-06-08',e:'2027-07-01',b:'mccoy'},
-    {s:'2027-07-11',e:'2027-07-25',b:'pemb'},
-    {s:'2027-07-15',e:'2027-07-26',b:'mccoy'},
-    {s:'2027-07-19',e:'2027-07-25',b:'gc'},
-    {s:'2027-07-26',e:'2027-08-01',b:'gc'},
-    {s:'2027-07-29',e:'2027-08-16',b:'gc'},
-    {s:'2027-08-01',e:'2027-08-21',b:'gc'},
-    {s:'2027-08-04',e:'2027-08-22',b:'pemb'},
-    {s:'2027-08-09',e:'2027-08-22',b:'mccoy'},
-    {s:'2027-08-19',e:'2027-08-30',b:'gc'},
-    {s:'2027-08-19',e:'2027-09-04',b:'gc'},
-    {s:'2027-08-20',e:'2027-08-30',b:'pemb'},
-    {s:'2027-08-20',e:'2027-08-30',b:'pemb'},
-    {s:'2027-08-31',e:'2027-09-18',b:'gc'},
-    {s:'2027-09-01',e:'2027-09-06',b:'gc'},
-    {s:'2027-09-02',e:'2027-09-07',b:'mccoy'},
-    {s:'2027-09-19',e:'2027-09-30',b:'gc'},
-    {s:'2027-09-22',e:'2027-09-29',b:'gc'},
-    {s:'2027-09-22',e:'2027-09-28',b:'gc'},
-    {s:'2027-10-03',e:'2027-10-05',b:'gc'},
-    {s:'2027-10-03',e:'2027-10-08',b:'gc'},
-    {s:'2027-10-03',e:'2027-10-08',b:'gc'},
-    {s:'2027-05-20',e:'2027-05-24',b:'gc'},
-    {s:'2027-05-25',e:'2027-05-30',b:'gc'},
-    {s:'2027-05-25',e:'2027-05-29',b:'mccoy'},
-    {s:'2027-05-31',e:'2027-06-06',b:'gc'},
-    {s:'2027-06-07',e:'2027-06-27',b:'pemb'},
-    {s:'2027-07-02',e:'2027-07-06',b:'mccoy'},
-    {s:'2027-07-07',e:'2027-07-25',b:'gc'},
-    {s:'2027-07-26',e:'2027-07-27',b:'mccoy'},
-    {s:'2027-07-30',e:'2027-08-01',b:'gc'},
-    {s:'2027-08-06',e:'2027-08-10',b:'gc'},
-    {s:'2027-09-03',e:'2027-09-14',b:'mccoy'},
-    {s:'2027-09-17',e:'2027-09-19',b:'mccoy'},
-    {s:'2027-09-20',e:'2027-09-24',b:'gc'},
-    {s:'2027-09-27',e:'2027-10-07',b:'pemb'},
-    {s:'2027-09-27',e:'2027-10-07',b:'pemb'},
-    {s:'2027-10-08',e:'2027-10-12',b:'mccoy'},
-    {s:'2027-10-08',e:'2027-10-12',b:'mccoy'},
-    {s:'2027-10-08',e:'2027-10-12',b:'mccoy'},
-    {s:'2027-10-18',e:'2027-10-18',b:'gc'},
-    {s:'2027-10-18',e:'2027-10-18',b:'mccoy'},
-    {s:'2027-10-19',e:'2027-10-19',b:'mccoy'},
-    {s:'2027-10-20',e:'2027-10-20',b:'mccoy'},
-    {s:'2027-10-23',e:'2027-10-23',b:'gc'},
-    {s:'2027-10-25',e:'2027-11-06',b:'design'},
-    {s:'2027-11-08',e:'2027-11-08',b:'mccoy'}
-  ];
-  const RENO_BUDGETS = { design:395466, pemb:2650000, gc:5970356, mccoy:489970 };
-  const SCHEDULE_BASELINE_IDX = 2026*12+7; // August 2026 -- matches the schedule's own earliest task
-  const SCHEDULE_BUCKET_DAYS = (()=>{
-    const days = { design:0, pemb:0, gc:0, mccoy:0 };
-    SCHEDULE_TASKS.forEach(t=>{
-      const s = new Date(t.s), e = new Date(t.e);
-      const d = Math.round((e-s)/86400000)+1;
-      days[t.b] += d;
-    });
-    return days;
-  })();
-
-  function buildScheduleSeries(tasks, budgets, bucketDays, shiftMonths){
-    const rate = {
-      design: budgets.design/bucketDays.design,
-      pemb: budgets.pemb/bucketDays.pemb,
-      gc: budgets.gc/bucketDays.gc,
-      mccoy: budgets.mccoy/bucketDays.mccoy,
-    };
-    const monthly = {};
-    let minIdx = Infinity, maxIdx = -Infinity;
-    tasks.forEach(t=>{
-      const s0 = new Date(t.s), e0 = new Date(t.e);
-      const s = new Date(s0.getFullYear(), s0.getMonth()+shiftMonths, s0.getDate());
-      const e = new Date(e0.getFullYear(), e0.getMonth()+shiftMonths, e0.getDate());
-      const r = rate[t.b];
-      let d = new Date(s);
-      while(d <= e){
-        const idx = d.getFullYear()*12 + d.getMonth();
-        if(!monthly[idx]) monthly[idx] = {design:0,pemb:0,gc:0,mccoy:0};
-        monthly[idx][t.b] += r;
-        if(idx<minIdx) minIdx=idx;
-        if(idx>maxIdx) maxIdx=idx;
-        d.setDate(d.getDate()+1);
-      }
-    });
-    const span = maxIdx-minIdx+1;
-    const design = new Array(span).fill(0), pemb = new Array(span).fill(0), gc = new Array(span).fill(0), mccoy = new Array(span).fill(0);
-    for(let idx=minIdx; idx<=maxIdx; idx++){
-      const i = idx-minIdx;
-      const m = monthly[idx];
-      if(m){ design[i]=m.design; pemb[i]=m.pemb; gc[i]=m.gc; mccoy[i]=m.mccoy; }
-    }
-    const combined = design.map((v,i)=>v+pemb[i]+gc[i]+mccoy[i]);
-    return { startIdx:minIdx, design, pemb, gc, mccoy, combined };
-  }
-  function buildRenoScheduleSeries(shiftMonths){
-    return buildScheduleSeries(SCHEDULE_TASKS, RENO_BUDGETS, SCHEDULE_BUCKET_DAYS, shiftMonths);
-  }
-
-  // Real detailed schedule for Canyon Lake (99 budgeted tasks, from its original as-built schedule --
-  // the same source document Reno Store 123 was rebased from). Bucket tags (design/pemb/gc/mccoy)
-  // assigned by matching each activity's name+phase against the same resource-based tagging used for
-  // the equivalent Reno Store 123 task. Façade Structural Steel (which Reno removed) is tagged 'pemb',
-  // matching its CT Darnel-resourced neighbors.
-  const CANYON_SCHEDULE_TASKS = [
-    {s:'2026-07-20',e:'2026-07-24',b:'mccoy'},
-    {s:'2026-07-20',e:'2026-07-24',b:'mccoy'},
-    {s:'2026-08-07',e:'2026-08-20',b:'mccoy'},
-    {s:'2026-10-31',e:'2027-01-21',b:'mccoy'},
-    {s:'2026-11-10',e:'2027-04-25',b:'mccoy'},
-    {s:'2026-11-22',e:'2026-12-03',b:'mccoy'},
-    {s:'2026-12-06',e:'2027-02-25',b:'gc'},
-    {s:'2026-12-24',e:'2027-03-16',b:'pemb'},
-    {s:'2026-12-31',e:'2027-01-27',b:'pemb'},
-    {s:'2027-01-03',e:'2027-02-12',b:'gc'},
-    {s:'2027-01-24',e:'2027-02-04',b:'pemb'},
-    {s:'2027-01-27',e:'2027-03-29',b:'pemb'},
-    {s:'2027-02-14',e:'2027-04-16',b:'mccoy'},
-    {s:'2027-02-14',e:'2027-03-25',b:'mccoy'},
-    {s:'2027-02-14',e:'2027-03-25',b:'gc'},
-    {s:'2027-02-14',e:'2027-03-25',b:'gc'},
-    {s:'2027-02-14',e:'2027-03-25',b:'mccoy'},
-    {s:'2027-02-14',e:'2027-03-04',b:'gc'},
-    {s:'2027-02-14',e:'2027-03-25',b:'pemb'},
-    {s:'2027-02-14',e:'2027-02-25',b:'pemb'},
-    {s:'2027-02-14',e:'2027-02-25',b:'gc'},
-    {s:'2027-02-14',e:'2027-02-25',b:'mccoy'},
-    {s:'2027-02-14',e:'2027-02-25',b:'mccoy'},
-    {s:'2027-02-28',e:'2027-03-11',b:'gc'},
-    {s:'2027-03-18',e:'2027-03-31',b:'gc'},
-    {s:'2027-03-18',e:'2027-03-31',b:'gc'},
-    {s:'2027-03-18',e:'2027-03-31',b:'mccoy'},
-    {s:'2027-03-25',e:'2027-03-31',b:'mccoy'},
-    {s:'2027-03-25',e:'2027-03-31',b:'gc'},
-    {s:'2026-07-20',e:'2026-07-22',b:'gc'},
-    {s:'2026-07-22',e:'2026-07-28',b:'gc'},
-    {s:'2026-07-27',e:'2026-08-07',b:'gc'},
-    {s:'2026-08-10',e:'2026-11-13',b:'gc'},
-    {s:'2026-10-13',e:'2026-11-23',b:'gc'},
-    {s:'2026-11-23',e:'2026-12-04',b:'gc'},
-    {s:'2026-12-05',e:'2026-12-17',b:'gc'},
-    {s:'2026-12-18',e:'2026-12-31',b:'gc'},
-    {s:'2027-01-01',e:'2027-01-18',b:'gc'},
-    {s:'2027-01-20',e:'2027-02-02',b:'gc'},
-    {s:'2027-02-03',e:'2027-02-18',b:'gc'},
-    {s:'2027-02-19',e:'2027-03-31',b:'gc'},
-    {s:'2027-03-20',e:'2027-03-31',b:'gc'},
-    {s:'2027-03-27',e:'2027-04-13',b:'gc'},
-    {s:'2026-08-24',e:'2026-09-03',b:'gc'},
-    {s:'2026-09-04',e:'2026-09-17',b:'gc'},
-    {s:'2026-09-18',e:'2026-09-26',b:'gc'},
-    {s:'2026-09-27',e:'2026-10-04',b:'gc'},
-    {s:'2026-10-12',e:'2026-11-22',b:'pemb'},
-    {s:'2026-11-09',e:'2026-11-23',b:'mccoy'},
-    {s:'2026-11-23',e:'2026-12-27',b:'gc'},
-    {s:'2026-11-23',e:'2026-12-13',b:'mccoy'},
-    {s:'2026-11-24',e:'2026-12-17',b:'mccoy'},
-    {s:'2026-12-24',e:'2027-01-18',b:'pemb'},
-    {s:'2026-12-27',e:'2027-01-10',b:'pemb'},
-    {s:'2026-12-31',e:'2027-01-11',b:'mccoy'},
-    {s:'2027-01-04',e:'2027-01-10',b:'gc'},
-    {s:'2027-01-11',e:'2027-01-17',b:'gc'},
-    {s:'2027-01-14',e:'2027-02-01',b:'gc'},
-    {s:'2027-01-17',e:'2027-02-06',b:'gc'},
-    {s:'2027-01-20',e:'2027-02-07',b:'pemb'},
-    {s:'2027-01-25',e:'2027-02-07',b:'mccoy'},
-    {s:'2027-02-04',e:'2027-02-15',b:'gc'},
-    {s:'2027-02-04',e:'2027-02-20',b:'gc'},
-    {s:'2027-02-05',e:'2027-02-15',b:'pemb'},
-    {s:'2027-02-05',e:'2027-02-15',b:'pemb'},
-    {s:'2027-02-16',e:'2027-03-06',b:'gc'},
-    {s:'2027-02-17',e:'2027-02-22',b:'gc'},
-    {s:'2027-02-18',e:'2027-02-23',b:'mccoy'},
-    {s:'2027-03-07',e:'2027-03-18',b:'gc'},
-    {s:'2027-03-10',e:'2027-03-17',b:'gc'},
-    {s:'2027-03-10',e:'2027-03-16',b:'gc'},
-    {s:'2027-03-21',e:'2027-03-23',b:'gc'},
-    {s:'2027-03-21',e:'2027-03-26',b:'gc'},
-    {s:'2027-03-21',e:'2027-03-26',b:'gc'},
-    {s:'2026-11-05',e:'2026-11-09',b:'gc'},
-    {s:'2026-11-10',e:'2026-11-15',b:'gc'},
-    {s:'2026-11-10',e:'2026-11-14',b:'mccoy'},
-    {s:'2026-11-16',e:'2026-11-22',b:'gc'},
-    {s:'2026-11-23',e:'2026-12-13',b:'pemb'},
-    {s:'2026-12-18',e:'2026-12-22',b:'mccoy'},
-    {s:'2026-12-23',e:'2027-01-10',b:'gc'},
-    {s:'2027-01-11',e:'2027-01-12',b:'mccoy'},
-    {s:'2027-01-15',e:'2027-01-17',b:'gc'},
-    {s:'2027-01-22',e:'2027-01-26',b:'gc'},
-    {s:'2027-02-19',e:'2027-03-02',b:'mccoy'},
-    {s:'2027-03-05',e:'2027-03-07',b:'mccoy'},
-    {s:'2027-03-08',e:'2027-03-12',b:'gc'},
-    {s:'2027-03-15',e:'2027-03-25',b:'pemb'},
-    {s:'2027-03-15',e:'2027-03-25',b:'pemb'},
-    {s:'2027-03-26',e:'2027-03-30',b:'mccoy'},
-    {s:'2027-03-26',e:'2027-03-30',b:'mccoy'},
-    {s:'2027-03-26',e:'2027-03-30',b:'mccoy'},
-    {s:'2027-04-05',e:'2027-04-05',b:'gc'},
-    {s:'2027-04-05',e:'2027-04-05',b:'mccoy'},
-    {s:'2027-04-06',e:'2027-04-06',b:'mccoy'},
-    {s:'2027-04-07',e:'2027-04-07',b:'mccoy'},
-    {s:'2027-04-10',e:'2027-04-10',b:'gc'},
-    {s:'2027-04-12',e:'2027-04-24',b:'design'},
-    {s:'2027-04-26',e:'2027-04-26',b:'mccoy'}
-  ];
-  const CANYON_BUDGETS = { design:379625, pemb:3238925, gc:6891480, mccoy:489970 };
-  const CANYON_SCHEDULE_BASELINE_IDX = 2026*12+6; // July 2026 -- matches Canyon Lake's actual Mobilize date
-  const CANYON_SCHEDULE_BUCKET_DAYS = (()=>{
-    const days = { design:0, pemb:0, gc:0, mccoy:0 };
-    CANYON_SCHEDULE_TASKS.forEach(t=>{
-      const s = new Date(t.s), e = new Date(t.e);
-      const d = Math.round((e-s)/86400000)+1;
-      days[t.b] += d;
-    });
-    return days;
-  })();
-  function buildCanyonScheduleSeries(shiftMonths){
-    return buildScheduleSeries(CANYON_SCHEDULE_TASKS, CANYON_BUDGETS, CANYON_SCHEDULE_BUCKET_DAYS, shiftMonths);
-  }
-
-  const els = {
-    azleStart: document.getElementById('cfAzleStart'),
-    canyonStart: document.getElementById('cfCanyonStart'),
-    showCanyon: document.getElementById('cfShowCanyon'),
-    showCombined: document.getElementById('cfShowCombined'),
-    splitDesign: document.getElementById('cfSplitDesign'),
-  };
-  [els.azleStart, els.canyonStart, els.showCanyon, els.showCombined, els.splitDesign].forEach(el=>el.addEventListener('input', renderCashflow));
-
-  function hexToRgb(hex){ const n=parseInt(hex.replace('#',''),16); return [(n>>16)&255,(n>>8)&255,n&255]; }
-  function heatColor(ratio){
-    const t = Math.sqrt(Math.max(0,Math.min(1,ratio)));
-    const c0 = hexToRgb('#eaf3ed'), c1 = hexToRgb('#1B4D2E');
-    const rgb = c0.map((v,i)=> Math.round(v + (c1[i]-v)*t));
-    return `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`;
-  }
-  function fmtHeat(v){
-    if(!v || v<=0) return '';
-    if(v>=1000000) return '$'+(v/1000000).toFixed(2)+'M';
-    if(v>=1000) return '$'+(v/1000).toFixed(1)+'K';
-    return '$'+Math.round(v);
-  }
-  function renderCashHeatmap(monthlyValues, yearBase, monthBase){
-    const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    const grid = {};
-    monthlyValues.forEach((v,i)=>{
-      const totalMonthIdx = monthBase+i;
-      const year = yearBase + Math.floor(totalMonthIdx/12);
-      const month = ((totalMonthIdx%12)+12)%12;
-      if(!grid[year]) grid[year] = new Array(12).fill(0);
-      grid[year][month] += v;
-    });
-    const years = Object.keys(grid).map(Number).sort((a,b)=>a-b);
-    const maxVal = Math.max(...monthlyValues, 1);
-
-    let html = '<table class="heatmap-table"><thead><tr><th class="year-col">Year</th>';
-    monthNames.forEach(m=> html += `<th>${m}</th>`);
-    html += '<th>Total</th></tr></thead><tbody>';
-    years.forEach(y=>{
-      html += `<tr><td class="year-col">${y}</td>`;
-      let yearTotal = 0;
-      grid[y].forEach(v=>{
-        yearTotal += v;
-        const ratio = v>0 ? v/maxVal : 0;
-        const bg = v>0 ? heatColor(ratio) : '#ffffff';
-        const textColor = Math.sqrt(ratio)>0.45 ? '#ffffff' : 'var(--cf-text)';
-        html += `<td style="background:${bg};color:${textColor};">${fmtHeat(v)}</td>`;
-      });
-      html += `<td class="total-col">${fmtHeat(yearTotal)}</td></tr>`;
-    });
-    html += '</tbody></table>';
-    document.getElementById('cfHeatmapWrap').innerHTML = html;
-  }
-
-  let cashChart;
-  function renderCashflow(){
-    const [ay, am] = els.azleStart.value.split('-').map(Number);
-    const shiftMonths = (ay*12+(am-1)) - SCHEDULE_BASELINE_IDX;
-    const azle = buildRenoScheduleSeries(shiftMonths);
-    const azleStartIdx = azle.startIdx;
-
-    const [cy, cm] = els.canyonStart.value.split('-').map(Number);
-    const canyonShiftMonths = (cy*12+(cm-1)) - CANYON_SCHEDULE_BASELINE_IDX;
-    const canyon = buildCanyonScheduleSeries(canyonShiftMonths);
-    const canyonStartIdx = canyon.startIdx;
-
-    const globalStart = Math.min(azleStartIdx, canyonStartIdx);
-    const globalEnd = Math.max(azleStartIdx+azle.combined.length-1, canyonStartIdx+canyon.combined.length-1);
-    const span = globalEnd-globalStart+1;
-
-    const azleAligned = { combinedArr:new Array(span).fill(0), designArr:new Array(span).fill(0), pembArr:new Array(span).fill(0), gcArr:new Array(span).fill(0), mccoyArr:new Array(span).fill(0) };
-    const canyonAligned = { combinedArr:new Array(span).fill(0), designArr:new Array(span).fill(0), pembArr:new Array(span).fill(0), gcArr:new Array(span).fill(0), mccoyArr:new Array(span).fill(0) };
-    for(let i=0;i<azle.combined.length;i++){
-      const idx = azleStartIdx-globalStart+i;
-      azleAligned.combinedArr[idx]=azle.combined[i];
-      azleAligned.designArr[idx]=azle.design[i];
-      azleAligned.pembArr[idx]=azle.pemb[i];
-      azleAligned.gcArr[idx]=azle.gc[i];
-      azleAligned.mccoyArr[idx]=azle.mccoy[i];
-    }
-    for(let i=0;i<canyon.combined.length;i++){
-      const idx = canyonStartIdx-globalStart+i;
-      canyonAligned.combinedArr[idx]=canyon.combined[i];
-      canyonAligned.designArr[idx]=canyon.design[i];
-      canyonAligned.pembArr[idx]=canyon.pemb[i];
-      canyonAligned.gcArr[idx]=canyon.gc[i];
-      canyonAligned.mccoyArr[idx]=canyon.mccoy[i];
-    }
-    const azleArr = azleAligned.combinedArr;
-    const canyonArr = canyonAligned.combinedArr;
-
-    const yearBase = Math.floor(globalStart/12);
-    const monthBase = globalStart%12;
-    const realLabels = Array.from({length:span}, (_,i)=> monthLabel(yearBase, monthBase, i));
-
-    const combined = azleArr.map((v,i)=> v + (els.showCanyon.checked? canyonArr[i]:0));
-    const split = els.splitDesign.checked;
-
-    const datasets = [];
-    if(split){
-      datasets.push({ label:'Reno Store 123 — Design', data:azleAligned.designArr, backgroundColor:'#FCE38A', stack:'s' });
-      datasets.push({ label:'Reno Store 123 — PEMB', data:azleAligned.pembArr, backgroundColor:'#F5C300', stack:'s' });
-      datasets.push({ label:'Reno Store 123 — GC', data:azleAligned.gcArr, backgroundColor:'#3d8b5e', stack:'s' });
-      datasets.push({ label:'Reno Store 123 — McCoy\'s Scope', data:azleAligned.mccoyArr, backgroundColor:'#A66B32', stack:'s' });
-      if(els.showCanyon.checked){
-        datasets.push({ label:'Canyon Lake — Design', data:canyonAligned.designArr, backgroundColor:'#8fbf9f', stack:'s' });
-        datasets.push({ label:'Canyon Lake — PEMB', data:canyonAligned.pembArr, backgroundColor:'#1B4D2E', stack:'s' });
-        datasets.push({ label:'Canyon Lake — GC', data:canyonAligned.gcArr, backgroundColor:'#204a2e', stack:'s' });
-        datasets.push({ label:'Canyon Lake — McCoy\'s Scope', data:canyonAligned.mccoyArr, backgroundColor:'#5b6058', stack:'s' });
-      }
-    } else {
-      datasets.push({ label:'Reno Store 123', data:azleArr, backgroundColor:'#F5C300', stack:'s' });
-      if(els.showCanyon.checked){
-        datasets.push({ label:'Canyon Lake', data:canyonArr, backgroundColor:'#1B4D2E', stack:'s' });
-      }
-    }
-    if(els.showCombined.checked){
-      datasets.push({ label:'Combined total', data:combined, type:'line', borderColor:'#1c1f1a', borderWidth:2.5, pointRadius:0, backgroundColor:'transparent', stack:undefined });
-    }
-
-    if(cashChart) cashChart.destroy();
-    cashChart = new Chart(document.getElementById('cfCashflowChart'), {
-      type:'bar',
-      data:{ labels: realLabels, datasets },
-      options:{
-        responsive:true,
-        interaction:{mode:'index', intersect:false},
-        plugins:{
-          legend:{ position:'bottom', labels:{ boxWidth:14 } },
-          title:{ display:true, text:'Projected monthly cash outflow', font:{size:12, weight:'500'}, color:'#5b6058' },
-          tooltip:{ callbacks:{ label: ctx => ctx.dataset.label+': '+fmtK(ctx.raw) } }
-        },
-        scales:{
-          x:{ stacked:true, grid:{color:'#ececE8'} },
-          y:{ stacked:true, ticks:{ callback:v=>fmtK(v) }, grid:{color:'#ececE8'} }
-        }
-      }
-    });
-
-    const overlapMonths = azleArr.reduce((acc,v,i)=> acc + ((v>0 && canyonArr[i]>0)?1:0), 0);
-    const peakCombined = Math.max(...combined);
-    const peakAzleStandalone = Math.max(...azle.combined);
-    document.getElementById('cfStatOverlap').textContent = overlapMonths;
-    document.getElementById('cfStatPeak').textContent = fmtK(peakCombined);
-    document.getElementById('cfStatAzlePeak').textContent = fmtK(peakAzleStandalone);
-    const finishIdx = azleStartIdx + azle.combined.length - 1;
-    document.getElementById('cfStatFinish').textContent = monthLabel(Math.floor(finishIdx/12), finishIdx%12, 0);
-
-    renderCashHeatmap(combined, yearBase, monthBase);
-  }
-  renderCashflow();
-
-  window.__cfResize = function(){ if(cashChart) cashChart.resize(); };
 })();
 </script>
 </body>
